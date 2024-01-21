@@ -9,6 +9,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 
 const Navbar = () => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+  const [yScrollPoint, setYScrollPoint] = useState<number>(0);
 
   useEffect(() => {
     const savedDarkMode = JSON.parse(
@@ -25,6 +26,18 @@ const Navbar = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setYScrollPoint(scrollY);
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [yScrollPoint]);
+
   const toggleDarkMode = () => {
     document.documentElement.classList.toggle("dark");
     const newIsDarkMode = document.documentElement.classList.contains("dark");
@@ -34,7 +47,7 @@ const Navbar = () => {
 
   const [isDrawerMenuOpened, setIsDrawerMenuOpened] = useState(false);
   return (
-    <div className="fixed bg-white w-full py-16 px-8 dark:bg-zinc-900">
+    <div className="sticky top-0 bg-white w-full p-8 shadow-xl !z-50 dark:bg-zinc-900">
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-4">
           <div
@@ -71,16 +84,18 @@ const Navbar = () => {
             height={250}
             className="dark:hidden"
           />
-          <h1 className="hidden dark:block dark:text-white font-Poppins_Black text-5xl tracking-widest">SOUL K/TCHEN</h1>
+          <h1 className="hidden dark:block dark:text-white font-Poppins_Black text-5xl tracking-widest">
+            SOUL K/TCHEN
+          </h1>
         </div>
         <div className="flex justify-center items-center tracking-widest !font-bold py-2 px-8 cursor-pointer border-2 !border-black dark:!border-gray-400 hover:bg-gray-400 hover:text-white hover:!border-gray-400 duration-300">
           BOOK YOUR TABLE
         </div>
       </div>
       <div
-        className={`fixed ${
-          isDrawerMenuOpened ? "left-0" : "left-[-30rem]"
-        } top-16 w-[300px] overflow-y-scroll min-h-screen dark:bg-zinc-900 dark:text-white transition-[left] duration-500 bg-white p-8 flex flex-col gap-20`}
+        className={`fixed ${isDrawerMenuOpened ? "left-0" : "left-[-30rem]"} ${
+          yScrollPoint > 45.599998474121094 ? "top-0" : "top-16"
+        } w-[300px] overflow-y-scroll min-h-screen dark:bg-zinc-900 dark:text-white transition-[left] duration-500 bg-white p-8 flex flex-col gap-20 !z-50`}
       >
         <div className="flex justify-between items-center">
           <h1 className="font-Poppins_Black text-3xl">Menu</h1>
