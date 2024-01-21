@@ -2,32 +2,159 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer base {
+  @font-face {
+    font-family: Poppins;
+    src: url("/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer base {
+  @font-face {
+    font-family: Poppins_Black;
+    src: url("/fonts/Poppins/Poppins-Black.ttf") format("truetype");
+  }
+}
+
+@layer base {
+  @font-face {
+    font-family: PlayfairDisplay;
+    src: url("/fonts/Playfair_Display/PlayfairDisplay-Regular.ttf")
+      format("truetype");
+  }
+}
+
+@layer base {
+  @font-face {
+    font-family: PlayfairDisplay_Black;
+    src: url("/fonts/Playfair_Display/PlayfairDisplay-Black.ttf")
+      format("truetype");
+  }
+}
+@layer base {
+  @font-face {
+    font-family: PlayfairDisplay_Italic;
+    src: url("/fonts/Playfair_Display/PlayfairDisplay-Italic.ttf")
+      format("truetype");
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+*,
+body,
+html {
+  font-family: Poppins;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  line-height: 1.6;
+  font-size: 1.6rem;
+  direction: rtl;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  user-select: none;
+  background-color: #f9f9f9;
+}
+
+*,
+*::after,
+*::before {
+  outline: none;
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+  transition: all 400ms ease;
+}
+
+/* CustomScrollbar.css */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #718096;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f7fafc;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #2d3748;
+}
+
+/* animations */
+
+@keyframes fade-right {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-left {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Define utility classes to apply the animations */
+.animate-fade-right {
+  animation: fade-right 1.5s ease-in;
+}
+
+.animate-fade-left {
+  animation: fade-left 1.5s ease-in;
+}
+
+.animate-fade-up {
+  animation: fade-up 1.5s ease-in;
+}
+
+.animate-fade-down {
+  animation: fade-down 1.5s ease-in;
 }
