@@ -1,18 +1,68 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
+import { BsFillSunFill } from "react-icons/bs";
 import { FaPlus } from "react-icons/fa";
+import { PiMoonStarsBold } from "react-icons/pi";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 const Navbar = () => {
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+
+  useEffect(() => {
+    const savedDarkMode = JSON.parse(
+      localStorage.getItem("darkMode") || "false"
+    );
+    setIsDarkMode(savedDarkMode);
+
+    if (savedDarkMode) {
+      document.documentElement.classList.add("dark");
+    }
+
+    return () => {
+      document.documentElement.classList.remove("dark");
+    };
+  }, []);
+
+  const toggleDarkMode = () => {
+    document.documentElement.classList.toggle("dark");
+    const newIsDarkMode = document.documentElement.classList.contains("dark");
+    setIsDarkMode(newIsDarkMode);
+    localStorage.setItem("darkMode", JSON.stringify(newIsDarkMode));
+  };
+
   const [isDrawerMenuOpened, setIsDrawerMenuOpened] = useState(false);
   return (
-    <div className="bg-white w-full py-16 px-8">
+    <div className="bg-white w-full py-16 px-8 dark:bg-zinc-900">
       <div className="flex justify-between items-center">
-        <div className="w-56 cursor-pointer" onClick={() => setIsDrawerMenuOpened(true)}>
-          <RxHamburgerMenu className="text-6xl" />
+        <div className="flex items-center gap-8">
+          <div
+            className="w-56 cursor-pointer"
+            onClick={() => setIsDrawerMenuOpened(true)}
+          >
+            <RxHamburgerMenu className="text-6xl" />
+          </div>
+          <div
+            className="cursor-pointer"
+            onClick={() => {
+              setIsDarkMode(!isDarkMode);
+            }}
+          >
+            {isDarkMode ? (
+              <PiMoonStarsBold
+                className="text-5xl text-slate-500 dark:text-slate-300"
+                onClick={toggleDarkMode}
+              />
+            ) : (
+              <BsFillSunFill
+                className="text-5xl text-slate-500 dark:text-slate-300"
+                onClick={toggleDarkMode}
+              />
+            )}
+          </div>
         </div>
+
         <div className="">
           <Image
             alt="Header's Logo"
@@ -28,7 +78,7 @@ const Navbar = () => {
       <div
         className={`fixed ${
           isDrawerMenuOpened ? "left-0" : "left-[-30rem]"
-        } top-16 w-[300px] overflow-y-scroll min-h-screen transition-[left] duration-300 bg-white p-8 flex flex-col gap-20`}
+        } top-16 w-[300px] overflow-y-scroll min-h-screen transition-[left] duration-500 bg-white p-8 flex flex-col gap-20`}
       >
         <div className="flex justify-between items-center">
           <h1 className="font-Poppins_Black text-3xl">Menu</h1>
