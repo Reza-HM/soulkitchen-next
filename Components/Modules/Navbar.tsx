@@ -34,9 +34,9 @@ const Navbar = () => {
 
   const [isDrawerMenuOpened, setIsDrawerMenuOpened] = useState(false);
   return (
-    <div className="bg-white w-full py-16 px-8 dark:bg-zinc-900">
+    <div className="fixed bg-white w-full py-16 px-8 dark:bg-zinc-900">
       <div className="flex justify-between items-center">
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-4">
           <div
             className="w-56 cursor-pointer"
             onClick={() => setIsDrawerMenuOpened(true)}
@@ -51,12 +51,12 @@ const Navbar = () => {
           >
             {isDarkMode ? (
               <PiMoonStarsBold
-                className="text-5xl text-slate-500 dark:text-slate-300"
+                className="text-5xl transition-colors duration-500 text-zinc-900 dark:text-slate-300"
                 onClick={toggleDarkMode}
               />
             ) : (
               <BsFillSunFill
-                className="text-5xl text-slate-500 dark:text-slate-300"
+                className="text-5xl transition-colors duration-500 text-slate-900 dark:text-slate-300"
                 onClick={toggleDarkMode}
               />
             )}
@@ -69,16 +69,18 @@ const Navbar = () => {
             src="/img/header-logo.png"
             width={250}
             height={250}
+            className="dark:hidden"
           />
+          <h1 className="hidden dark:block dark:text-white font-Poppins_Black text-5xl tracking-widest">SOUL K/TCHEN</h1>
         </div>
-        <div className="flex justify-center items-center tracking-widest !font-bold py-2 px-8 cursor-pointer border-2 !border-black hover:bg-gray-400 hover:text-white hover:!border-gray-400 duration-300">
+        <div className="flex justify-center items-center tracking-widest !font-bold py-2 px-8 cursor-pointer border-2 !border-black dark:!border-gray-400 hover:bg-gray-400 hover:text-white hover:!border-gray-400 duration-300">
           BOOK YOUR TABLE
         </div>
       </div>
       <div
         className={`fixed ${
           isDrawerMenuOpened ? "left-0" : "left-[-30rem]"
-        } top-16 w-[300px] overflow-y-scroll min-h-screen transition-[left] duration-500 bg-white p-8 flex flex-col gap-20`}
+        } top-16 w-[300px] overflow-y-scroll min-h-screen dark:bg-zinc-900 dark:text-white transition-[left] duration-500 bg-white p-8 flex flex-col gap-20`}
       >
         <div className="flex justify-between items-center">
           <h1 className="font-Poppins_Black text-3xl">Menu</h1>

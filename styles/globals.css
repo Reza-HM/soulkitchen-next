@@ -45,6 +45,11 @@
   }
 }
 
+/* Add these styles to your global CSS or component-specific CSS file */
+:root {
+  --transition-duration: 0.5s; /* Adjust the transition duration as needed */
+}
+
 *,
 body,
 html {
@@ -155,4 +160,11 @@ a {
 
 .animate-fade-down {
   animation: fade-down 0.4s ease-in;
+}
+
+.dark {
+  background-color: #18181b;
+  color: #fff;
+  transition: background-color var(--transition-duration),
+    color var(--transition-duration);
 }
