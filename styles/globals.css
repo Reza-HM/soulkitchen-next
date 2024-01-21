@@ -147,19 +147,19 @@ a {
 
 /* Define utility classes to apply the animations */
 .animate-fade-right {
-  animation: fade-right 0.4s ease-in;
+  animation: fade-right 0.8s ease-in;
 }
 
 .animate-fade-left {
-  animation: fade-left 0.4s ease-in;
+  animation: fade-left 0.8s ease-in;
 }
 
 .animate-fade-up {
-  animation: fade-up 0.4s ease-in;
+  animation: fade-up 0.8s ease-in;
 }
 
 .animate-fade-down {
-  animation: fade-down 0.4s ease-in;
+  animation: fade-down 0.8s ease-in;
 }
 
 .dark {
