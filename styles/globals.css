@@ -59,11 +59,9 @@ html {
 body {
   line-height: 1.6;
   font-size: 1.6rem;
-  direction: rtl;
   scroll-behavior: smooth;
   overflow-x: hidden;
   user-select: none;
-  background-color: #f9f9f9;
 }
 
 *,
@@ -144,17 +142,17 @@ a {
 
 /* Define utility classes to apply the animations */
 .animate-fade-right {
-  animation: fade-right 1.5s ease-in;
+  animation: fade-right 0.4s ease-in;
 }
 
 .animate-fade-left {
-  animation: fade-left 1.5s ease-in;
+  animation: fade-left 0.4s ease-in;
 }
 
 .animate-fade-up {
-  animation: fade-up 1.5s ease-in;
+  animation: fade-up 0.4s ease-in;
 }
 
 .animate-fade-down {
-  animation: fade-down 1.5s ease-in;
+  animation: fade-down 0.4s ease-in;
 }
