@@ -1,4 +1,6 @@
+import AfterDinnerMenuTemplate from "@/Components/Modules/AfterDinnerMenuTemplate";
 import DinnerMenuTemplate from "@/Components/Modules/DinnerMenuTemplate";
+import LunchMenuTemplate from "@/Components/Modules/LunchMenuTemplate";
 import { useState } from "react";
 
 const Menu = () => {
@@ -13,9 +15,9 @@ const Menu = () => {
       case "dinner":
         return <DinnerMenuTemplate />;
       case "after dinner":
-        return <DinnerMenuTemplate />;
+        return <AfterDinnerMenuTemplate />;
       case "lunch":
-        return <DinnerMenuTemplate />;
+        return <LunchMenuTemplate />;
       default:
         return null;
     }
