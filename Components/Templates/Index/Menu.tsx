@@ -1,8 +1,5 @@
+import DinnerMenuTemplate from "@/Components/Modules/DinnerMenuTemplate";
 import { useState } from "react";
-
-const DinnerTemplate: React.FC = () => <div>Dinner Template</div>;
-const AfterDinnerTemplate: React.FC = () => <div>After Dinner Template</div>;
-const LunchTemplate: React.FC = () => <div>Lunch Template</div>;
 
 const Menu = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -14,18 +11,18 @@ const Menu = () => {
   const renderTemplate = () => {
     switch (selectedCategory) {
       case "dinner":
-        return <DinnerTemplate />;
+        return <DinnerMenuTemplate />;
       case "after dinner":
-        return <AfterDinnerTemplate />;
+        return <DinnerMenuTemplate />;
       case "lunch":
-        return <LunchTemplate />;
+        return <DinnerMenuTemplate />;
       default:
         return null;
     }
   };
 
   return (
-    <div className="container">
+    <div className="container animate-fade-up">
       <div className="p-8 m-8 flex flex-col gap-16 items-center text-center">
         <h2 className="font-PlayfairDisplay text-6xl font-bold">Our Menu</h2>
         <p>

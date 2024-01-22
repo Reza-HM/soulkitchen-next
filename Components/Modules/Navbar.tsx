@@ -88,7 +88,10 @@ const Navbar = () => {
             SOUL K/TCHEN
           </h1>
         </div>
-        <Link href="/booking" className="flex justify-center items-center tracking-widest !font-bold py-2 px-8 cursor-pointer border-2 !border-black dark:!border-gray-400 hover:bg-gray-400 hover:text-white hover:!border-gray-400 duration-300">
+        <Link
+          href="/booking"
+          className="flex justify-center items-center tracking-widest !font-bold py-2 px-8 cursor-pointer border-2 !border-black dark:!border-gray-400 hover:bg-gray-400 hover:text-white hover:!border-gray-400 duration-300"
+        >
           BOOK YOUR TABLE
         </Link>
       </div>
@@ -116,29 +119,7 @@ const Navbar = () => {
             <Link href="/team">THE TEAM</Link>
           </li>
           <li className="pt-8 font-bold">
-            <div className="flex justify-between items-center">
-              <span>MENUS</span>
-              <FaPlus />
-            </div>
-            <ul className="hidden">
-              <li className="">
-                <Link href="/menu-blocks">MENU BLOCK EXAMPLES</Link>
-              </li>
-              <li className="">
-                <Link href="/list&gallery">LIST MENU + GALLERY SECTIONS</Link>
-              </li>
-              <li className="">
-                <Link href="/menu-with-tabs">MENU WITH TABS</Link>
-              </li>
-              <li className="">
-                <Link href="/menu-with-category-image">
-                  MENU WITH CATEGORY IMAGE
-                </Link>
-              </li>
-              <li className="">
-                <Link href="/menu-with-images">MENU ITEMS WITH IMAGE</Link>
-              </li>
-            </ul>
+            <Link href="/menu">THE MENU</Link>
           </li>
           <li className="pt-8 font-bold">
             <Link href="/whats_happening">WHAT’S HAPPENING</Link>
