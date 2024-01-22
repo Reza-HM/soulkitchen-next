@@ -4,7 +4,9 @@ import LunchMenuTemplate from "@/Components/Modules/LunchMenuTemplate";
 import { useState } from "react";
 
 const Menu = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(
+    "dinner"
+  );
 
   const handleCategoryClick = (category: string) => {
     setSelectedCategory(category);
