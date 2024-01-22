@@ -88,9 +88,9 @@ const Navbar = () => {
             SOUL K/TCHEN
           </h1>
         </div>
-        <div className="flex justify-center items-center tracking-widest !font-bold py-2 px-8 cursor-pointer border-2 !border-black dark:!border-gray-400 hover:bg-gray-400 hover:text-white hover:!border-gray-400 duration-300">
+        <Link href="/booking" className="flex justify-center items-center tracking-widest !font-bold py-2 px-8 cursor-pointer border-2 !border-black dark:!border-gray-400 hover:bg-gray-400 hover:text-white hover:!border-gray-400 duration-300">
           BOOK YOUR TABLE
-        </div>
+        </Link>
       </div>
       <div
         className={`fixed ${isDrawerMenuOpened ? "left-0" : "left-[-30rem]"} ${
