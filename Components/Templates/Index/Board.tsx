@@ -25,6 +25,7 @@ const Board = () => {
               </span>
             </div>
           </div>
+          <p className="tracking-widest text-zinc-500 text-center text-2xl !mt-8">FAVORITE FOOD: GRILLED TALAPIA WITH CRAYFISH SAUCE</p>
         </div>
         <div className="w-full md:w-1/2 md:flex-1">
           <div className="relative">
@@ -47,6 +48,7 @@ const Board = () => {
               </span>
             </div>
           </div>
+          <p className="tracking-widest text-zinc-500 text-center text-2xl !mt-8">FAVORITE FOOD: PACIFIC OYSTERS WITH PONZU SAUCE</p>
         </div>
       </div>
     </div>
