@@ -107,9 +107,15 @@ const Footer = () => {
         </div>
       </div>
       <div className="bg-cyan-950 text-white p-8 flex justify-between items-center">
-        <p className="text-xl w-full md:w-1/3 md:flex-1 text-start">© 2023 SOULKITCHEN. ALL RIGHTS RESERVED.</p>
-        <h1 className="text-4xl w-full md:w-1/3 md:flex-1 text-center">SOUL K/TCHEN</h1>
-        <div className="text-xl w-full md:w-1/3 md:flex-1 text-end">TASTE THE DIFFERENCE</div>
+        <p className="text-xl w-full md:w-1/3 md:flex-1 text-start">
+          © 2023 SOULKITCHEN. ALL RIGHTS RESERVED.
+        </p>
+        <h1 className="text-4xl w-full md:w-1/3 md:flex-1 text-center">
+          SOUL K/TCHEN
+        </h1>
+        <div className="text-xl w-full md:w-1/3 md:flex-1 text-end">
+          TASTE THE DIFFERENCE
+        </div>
       </div>
     </div>
   );

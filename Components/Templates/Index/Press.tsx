@@ -3,12 +3,12 @@ import Image from "next/image";
 const Press = () => {
   return (
     <div className="container mt-60">
-      <div className="relative before:absolute before:w-1 before:h-20 before:block before:!-bottom-28 before:!bg-zinc-400 flex flex-col items-center gap-8">
+      <div className="relative before:absolute before:w-1 before:h-20 before:block before:!-bottom-28 before:!bg-zinc-400 flex flex-col items-center gap-">
         <h2 className="font-PlayfairDisplay font-semibold text-6xl tracking-widest">
           In The Press
         </h2>
       </div>
-      <div className="grid grid-cols-10 place-items-center  items-center gap-20 mt-40">
+      <div className="grid grid-cols-10 place-items-center items-center gap-20 mt-40 dark:bg-zinc-600 p-20 rounded-xl">
         <Image
           alt="press's photo"
           src="/img/press1.png"
