@@ -168,3 +168,71 @@ a {
   transition: background-color var(--transition-duration),
     color var(--transition-duration);
 }
+
+/* Neumorphism  */
+
+/* Neumorphic Container */
+.neumorphic-container {
+  background-color: #f0f0f0;
+  box-shadow: 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+/* Neumorphic Form */
+.neumorphic-form {
+  background-color: #f0f0f0;
+  box-shadow: inset 6px 6px 12px #d1d1d1, inset -6px -6px 12px #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Neumorphic Input */
+.neumorphic-input {
+  background-color: #f0f0f0;
+  box-shadow: inset 2px 2px 4px #d1d1d1, inset -2px -2px 4px #ffffff;
+  border: none;
+  padding: 1em;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+/* Neumorphic Button */
+.neumorphic-button {
+  background-color: #f0f0f0;
+  color: #333;
+  box-shadow: 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
+  border: none;
+  padding: 1em;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  width: 100%;
+}
+
+/* Hover Effect for Neumorphic Button */
+.neumorphic-button:hover {
+  background-color: #d1d1d1;
+  color: #fff;
+}
+
+/* Neumorphic Heading */
+.neumorphic-heading {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px #d1d1d1, -2px -2px 4px #ffffff;
+}
+
+/* Neumorphic Text */
+.neumorphic-text {
+  color: #333;
+  text-align: center;
+  text-shadow: 1px 1px 2px #d1d1d1, -1px -1px 2px #ffffff;
+  margin-bottom: 20px;
+}
