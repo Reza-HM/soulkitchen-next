@@ -1,4 +1,5 @@
 import About from "@/Components/Templates/Index/About";
+import Board from "@/Components/Templates/Index/Board";
 import DrinksMenu from "@/Components/Templates/Index/DrinksMenu";
 import Events from "@/Components/Templates/Index/Events";
 import Gallery from "@/Components/Templates/Index/Gallery";
@@ -18,6 +19,7 @@ const Home = () => {
       <DrinksMenu />
       <Events />
       <SignUp />
+      <Board />
     </div>
   );
 };

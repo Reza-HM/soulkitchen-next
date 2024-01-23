@@ -47,7 +47,7 @@ const Events = () => {
               </Link>
               <Link
                 href="/whats-happening"
-                className="tracking-widest text-zinc-400 text-2xl pb-1 border-b-2 border-zinc-400"
+                className="tracking-widest text-zinc-400 text-2xl pb border-b-2 border-zinc-400"
               >
                 READ MORE
               </Link>

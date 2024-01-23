@@ -236,3 +236,71 @@ a {
   text-shadow: 1px 1px 2px #d1d1d1, -1px -1px 2px #ffffff;
   margin-bottom: 20px;
 }
+
+/* Neumorphic Dark Container */
+.neumorphic-dark-container {
+  background-color: #333;
+  box-shadow: 8px 8px 16px #1a1a1a, -8px -8px 16px #474747;
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 40px;
+  color: #fff;
+}
+
+/* Neumorphic Dark Form */
+.neumorphic-dark-form {
+  background-color: #333;
+  box-shadow: inset 6px 6px 12px #1a1a1a, inset -6px -6px 12px #474747;
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 20px;
+  color: #fff;
+}
+
+/* Neumorphic Dark Input */
+.neumorphic-dark-input {
+  background-color: #333;
+  box-shadow: inset 2px 2px 4px #1a1a1a, inset -2px -2px 4px #474747;
+  border: none;
+  padding: 1em;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  color: #fff;
+}
+
+/* Neumorphic Dark Button */
+.neumorphic-dark-button {
+  background-color: #333;
+  color: #fff;
+  box-shadow: 8px 8px 16px #1a1a1a, -8px -8px 16px #474747;
+  border: none;
+  padding: 1em;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  width: 100%;
+}
+
+/* Hover Effect for Neumorphic Dark Button */
+.neumorphic-dark-button:hover {
+  background-color: #474747;
+}
+
+/* Neumorphic Dark Heading */
+.neumorphic-dark-heading {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px #1a1a1a, -2px -2px 4px #474747;
+}
+
+/* Neumorphic Dark Text */
+.neumorphic-dark-text {
+  color: #fff;
+  text-align: center;
+  text-shadow: 1px 1px 2px #1a1a1a, -1px -1px 2px #474747;
+  margin-bottom: 20px;
+}
