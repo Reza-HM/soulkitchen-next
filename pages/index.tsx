@@ -8,6 +8,7 @@ import Menu from "@/Components/Templates/Index/Menu";
 import Press from "@/Components/Templates/Index/Press";
 import SignUp from "@/Components/Templates/Index/SignUp";
 import Team from "@/Components/Templates/Index/Team";
+import Visit from "@/Components/Templates/Index/Visit";
 
 const Home = () => {
   return (
@@ -22,6 +23,7 @@ const Home = () => {
       <SignUp />
       <Board />
       <Press />
+      <Visit />
     </div>
   );
 };
