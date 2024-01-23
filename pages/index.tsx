@@ -1,4 +1,5 @@
 import About from "@/Components/Templates/Index/About";
+import DrinksMenu from "@/Components/Templates/Index/DrinksMenu";
 import Gallery from "@/Components/Templates/Index/Gallery";
 import Header from "@/Components/Templates/Index/Header";
 import Menu from "@/Components/Templates/Index/Menu";
@@ -12,6 +13,7 @@ const Home = () => {
       <Team />
       <Menu />
       <Gallery />
+      <DrinksMenu />
     </div>
   );
 };
