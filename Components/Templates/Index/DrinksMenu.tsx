@@ -33,7 +33,9 @@ const DrinksMenu = () => {
         <div className="flex justify-center items-center gap-20 text-zinc-400 text-2xl font-bold">
           <span
             className={`${
-              selectedCategory === "wines" ? "border-b-2 border-black pb-4" : ""
+              selectedCategory === "wines"
+                ? "border-b-2 border-black dark:border-white pb-4"
+                : ""
             } cursor-pointer tracking-widest hover:text-zinc-600 duration-300`}
             onClick={() => handleCategoryClick("wines")}
           >
@@ -42,7 +44,7 @@ const DrinksMenu = () => {
           <span
             className={`${
               selectedCategory === "cocktails"
-                ? "border-b-2 border-black pb-4"
+                ? "border-b-2 border-black dark:border-white pb-4"
                 : ""
             } cursor-pointer tracking-widest hover:text-zinc-600 duration-300`}
             onClick={() => handleCategoryClick("cocktails")}

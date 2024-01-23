@@ -37,7 +37,7 @@ const Menu = () => {
           <span
             className={`${
               selectedCategory === "dinner"
-                ? "border-b-2 border-black pb-4"
+                ? "border-b-2 border-black dark:border-white pb-4"
                 : ""
             } cursor-pointer tracking-widest hover:text-zinc-600 duration-300`}
             onClick={() => handleCategoryClick("dinner")}
@@ -47,7 +47,7 @@ const Menu = () => {
           <span
             className={`${
               selectedCategory === "after dinner"
-                ? "border-b-2 border-black pb-4"
+                ? "border-b-2 border-black dark:border-white pb-4"
                 : ""
             } cursor-pointer tracking-widest hover:text-zinc-600 duration-300`}
             onClick={() => handleCategoryClick("after dinner")}
@@ -56,7 +56,9 @@ const Menu = () => {
           </span>
           <span
             className={`${
-              selectedCategory === "lunch" ? "border-b-2 border-black pb-4" : ""
+              selectedCategory === "lunch"
+                ? "border-b-2 border-black dark:border-white pb-4"
+                : ""
             } cursor-pointer tracking-widest hover:text-zinc-600 duration-300`}
             onClick={() => handleCategoryClick("lunch")}
           >
