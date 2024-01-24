@@ -9,10 +9,16 @@ import Press from "@/Components/Templates/Index/Press";
 import SignUp from "@/Components/Templates/Index/SignUp";
 import Team from "@/Components/Templates/Index/Team";
 import Visit from "@/Components/Templates/Index/Visit";
+import Head from "next/head";
 
 const Home = () => {
   return (
     <div className="">
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="/img/icon.png" type="image/x-icon" />
+        <title>Soul Kitchen</title>
+      </Head>
       <Header />
       <About />
       <Team />

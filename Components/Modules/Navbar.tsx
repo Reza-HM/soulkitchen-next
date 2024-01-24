@@ -113,7 +113,7 @@ const Navbar = () => {
             <Link href="/">HOME</Link>
           </li>
           <li className="pt-8 font-bold">
-            <Link href="/about">ABOUT</Link>
+            <Link href="/aboutus">ABOUT</Link>
           </li>
           <li className="pt-8 font-bold">
             <Link href="/team">THE TEAM</Link>
