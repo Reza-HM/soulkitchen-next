@@ -1,6 +1,7 @@
 import Chef from "@/Components/Templates/Aboutus/Chef";
 import Header from "@/Components/Templates/Aboutus/Header";
 import Philosophy from "@/Components/Templates/Aboutus/Philosophy";
+import Recipe from "@/Components/Templates/Aboutus/Recipe";
 
 const Index = () => {
   return (
@@ -8,6 +9,7 @@ const Index = () => {
       <Header />
       <Chef />
       <Philosophy />
+      <Recipe />
     </div>
   );
 };

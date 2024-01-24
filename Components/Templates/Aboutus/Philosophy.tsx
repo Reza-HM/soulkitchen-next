@@ -5,7 +5,7 @@ const Philosophy = () => {
     <div className="flex justify-between">
       <div className="flex-1 flex justify-center items-center">
         <div className="flex-[10] flex flex-col gap-12 p-16">
-          <h2 className="text-6xl font-PlayfairDisplay_Italic font-bold">
+          <h2 className="text-6xl font-PlayfairDisplay_Italic font-bold ">
             Food Philosophy
           </h2>
           <p className="line-clamp-5 text-justify leading-loose text-2xl">
