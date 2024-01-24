@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Visit = () => {
   return (
-    <div className="container mt-60">
+    <div className="container mt-60 mb-40">
       <div className="relative before:absolute before:w-1 before:h-20 before:block before:!-bottom-28 before:!bg-zinc-400 flex flex-col items-center gap-8">
         <h2 className="font-PlayfairDisplay font-semibold text-6xl tracking-widest">
           Visit Us
