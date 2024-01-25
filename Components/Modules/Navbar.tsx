@@ -77,16 +77,21 @@ const Navbar = () => {
         </div>
 
         <div className="">
-          <Image
-            alt="Header's Logo"
-            src="/img/header-logo.png"
-            width={250}
-            height={250}
-            className="dark:hidden"
-          />
-          <h1 className="hidden dark:block dark:text-white font-Poppins_Black text-5xl tracking-widest">
-            SOUL K/TCHEN
-          </h1>
+          <Link href="/">
+            <Image
+              alt="Header's Logo"
+              src="/img/header-logo.png"
+              width={250}
+              height={250}
+              className="dark:hidden"
+            />
+          </Link>
+
+          <Link href="/">
+            <h1 className="hidden dark:block dark:text-white font-Poppins_Black text-5xl tracking-widest">
+              SOUL K/TCHEN
+            </h1>
+          </Link>
         </div>
         <Link
           href="/booking"

@@ -236,6 +236,28 @@ a {
   text-shadow: 1px 1px 2px #d1d1d1, -1px -1px 2px #ffffff;
   margin-bottom: 20px;
 }
+.neumorphic-checkbox {
+  width: 18px; /* Adjust as needed */
+  height: 18px; /* Adjust as needed */
+  border: none;
+  outline: none;
+  appearance: none;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+
+  /* Neumorphic styles */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1),
+    -2px -2px 5px rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+}
+
+.neumorphic-checkbox:checked {
+  background: #3498db; /* Change to your desired checked color */
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.5);
+}
 
 /* Neumorphic Dark Container */
 .neumorphic-dark-container {
