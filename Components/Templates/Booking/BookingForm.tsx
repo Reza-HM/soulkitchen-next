@@ -7,9 +7,9 @@ const BookingForm = () => {
   };
 
   return (
-    <div className="container p-24">
+    <div className="container p-24 dark:text-zinc-700">
       <div className="flex flex-wrap gap-20">
-        <div className="flex-1">
+        <div className="flex-1 !w-full">
           <div className="flex flex-col gap-12 neumorphic-container dark:text-zinc-700 dark:shadow-md !mt-6">
             <p className="max-w-[400px]">
               We will confirm your reservation within 24 hours via Email.
@@ -25,8 +25,8 @@ const BookingForm = () => {
             </div>
           </div>
         </div>
-        <div className="flex-[2]">
-          <form className="flex flex-col gap-12 neumorphic-form">
+        <div className="flex-[2] !w-full">
+          <form className="flex flex-col gap-12 neumorphic-form !w-full">
             <div className="flex flex-col gap-4">
               <label
                 htmlFor=""
@@ -56,7 +56,7 @@ const BookingForm = () => {
             </div>
             <div className="flex flex-col gap-8">
               <h3>TIME *</h3>
-              <div className="flex items-center gap-20">
+              <div className="flex flex-wrap items-center gap-20">
                 <div className="">
                   <label htmlFor="" className="flex items-center gap-4">
                     <input
@@ -150,7 +150,7 @@ const BookingForm = () => {
               >
                 NUMBER OF PEOPLE *
               </label>
-              <input type="number" className="neumorphic-input" />
+              <input type="number" className="neumorphic-input" min={0} />
             </div>
             <div className="flex flex-col gap-4">
               <label
@@ -160,6 +160,12 @@ const BookingForm = () => {
                 YOUR MESSAGE *
               </label>
               <textarea className="neumorphic-input min-h-40 max-h-60"></textarea>
+              <button
+                type="submit"
+                className="rounded-xl !w-80 !p-4 !bg-black !text-zinc-500 !font-bold tracking-widest hover:!bg-zinc-500 hover:!text-zinc-100 !duration-300"
+              >
+                SEND
+              </button>
             </div>
           </form>
         </div>
