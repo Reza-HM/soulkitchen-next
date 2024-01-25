@@ -1,3 +1,4 @@
+import ExecutiveChef from "@/Components/Templates/Team/ExecutiveChef";
 import HeadChef from "@/Components/Templates/Team/HeadChef";
 import Header from "@/Components/Templates/Team/Header";
 
@@ -6,6 +7,7 @@ const index = () => {
     <div>
       <Header />
       <HeadChef />
+      <ExecutiveChef />
     </div>
   );
 };
