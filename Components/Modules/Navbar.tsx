@@ -48,16 +48,16 @@ const Navbar = () => {
   const [isDrawerMenuOpened, setIsDrawerMenuOpened] = useState(false);
   return (
     <div className="sticky top-0 bg-white w-full p-8 shadow-xl !z-50 dark:bg-zinc-900">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between flex-wrap lg:gap-0 items-center">
         <div className="flex items-center gap-4">
           <div
-            className="w-56 cursor-pointer"
+            className="lg:w-56 cursor-pointer"
             onClick={() => setIsDrawerMenuOpened(true)}
           >
             <RxHamburgerMenu className="text-6xl" />
           </div>
           <div
-            className="cursor-pointer"
+            className="cursor-pointer ml-8 lg:ml-0"
             onClick={() => {
               setIsDarkMode(!isDarkMode);
             }}
@@ -95,7 +95,7 @@ const Navbar = () => {
         </div>
         <Link
           href="/booking"
-          className="flex justify-center items-center tracking-widest !font-bold py-2 px-8 cursor-pointer border-2 !border-black dark:!border-gray-400 hover:bg-gray-400 hover:text-white hover:!border-gray-400 duration-300"
+          className="hidden lg:flex justify-center items-center tracking-widest !font-bold py-2 px-8 cursor-pointer border-2 !border-black dark:!border-gray-400 hover:bg-gray-400 hover:text-white hover:!border-gray-400 duration-300"
         >
           BOOK YOUR TABLE
         </Link>

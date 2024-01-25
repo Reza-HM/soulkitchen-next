@@ -6,7 +6,7 @@ import { MdEmail } from "react-icons/md";
 const Topbar = () => {
   return (
     <div className="w-full py-4 px-8 bg-zinc-800 text-zinc-400 text-2xl">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-center lg:justify-between flex-wrap gap-16 items-center">
         <div className="flex items-center gap-8">
           <div className="flex items-center gap-4 cursor-pointer">
             <FaLocationDot className="hover:text-zinc-200 duration-300" />
