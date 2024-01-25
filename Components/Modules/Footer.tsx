@@ -12,17 +12,17 @@ const Footer = () => {
   return (
     <div className="">
       <div className="w-full bg-[#8fa2a0] !text-white">
-        <div className="container p-20">
-          <div className="grid grid-cols-12 gap-20 px-20">
+        <div className="container p-8 md:p-20">
+          <div className="grid grid-cols-12 gap-8 md:gap-20 px-4 md:px-20">
             <div className="col-span-12 md:col-span-3 flex flex-col gap-8">
               <h2 className="font-PlayfairDisplay text-3xl font-semibold">
                 Welcome to Soul Kitchen
               </h2>
-              <p>
+              <p className="">
                 SOUL KITCHEN, founded in 2022, is dedicated to all those who
                 love to wander far and wide.
               </p>
-              <p>
+              <p className="">
                 We invite you on a wholesome culinary adventure, where you’ll
                 explore undiscovered gourmet experiences.
               </p>
@@ -49,7 +49,7 @@ const Footer = () => {
                 <h3 className="font-PlayfairDisplay text-3xl font-semibold">
                   Write
                 </h3>
-                <p className="flex items-center gap-4">
+                <p className="flex items-center gap-4 flex-wrap">
                   {" "}
                   <MdEmail /> eat@soulkitchen.com
                 </p>
@@ -62,7 +62,7 @@ const Footer = () => {
                 </h2>
                 <Link
                   href="/booking"
-                  className="flex justify-center items-center text-2xl tracking-widest !font-bold py-4 px-12 w-96 cursor-pointer border-2 !border-white hover:bg-white hover:text-zinc-500 hover:!border-white duration-300"
+                  className="flex md:!w-40 lg:!w-80 xl:!w-96 justify-center items-center text-2xl tracking-widest !font-bold py-4 px-12 cursor-pointer border-2 !border-white hover:bg-white hover:text-zinc-500 hover:!border-white duration-300"
                 >
                   BOOK YOUR TABLE
                 </Link>
@@ -106,14 +106,14 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="bg-cyan-950 text-white p-8 flex justify-between items-center">
-        <p className="text-xl w-full md:w-1/3 md:flex-1 text-start">
+      <div className="bg-cyan-950 text-white p-4 md:p-8 flex justify-between flex-col md:flex-row items-center">
+        <p className="text-lg md:text-xl w-full md:w-1/3 md:flex-1 text-center md:text-start mb-4 md:mb-0">
           © 2023 SOULKITCHEN. ALL RIGHTS RESERVED.
         </p>
-        <h1 className="text-4xl w-full md:w-1/3 md:flex-1 text-center">
+        <h1 className="text-2xl md:text-4xl w-full md:w-1/3 md:flex-1 text-center mb-4 md:mb-0">
           SOUL K/TCHEN
         </h1>
-        <div className="text-xl w-full md:w-1/3 md:flex-1 text-end">
+        <div className="text-lg md:text-xl w-full md:w-1/3 md:flex-1 text-center md:text-end">
           TASTE THE DIFFERENCE
         </div>
       </div>
