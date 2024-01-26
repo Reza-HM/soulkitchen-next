@@ -3,9 +3,9 @@ import Link from "next/link";
 
 const index = () => {
   return (
-    <div className="container p-20 mt-20">
-      <div className="grid grid-cols-12 items-center gap-12">
-        <div className="col-span-12 md:col-span-6 lg:col-span-4">
+    <div className="container p-8 md:p-20 mt-4 md:mt-20">
+      <div className="grid grid-cols-12 items-center gap-4 md:gap-12">
+        <div className="col-span-12 md:col-span-6 lg:col-span-4 w-[200px] xs:w-auto mx-auto">
           <div className="flex flex-col gap-8 items-center">
             <Link href="/whats-happening">
               <Image
@@ -13,7 +13,7 @@ const index = () => {
                 src="/img/event1.jpg"
                 width={500}
                 height={500}
-                className="flex-1 cursor-pointer hover:-translate-y-4 duration-300"
+                className="flex-1 !w-[200px] !h-[200px] sm:!w-auto sm:!h-[auto] cursor-pointer hover:-translate-y-4 duration-300"
               />
             </Link>
             <div className="flex items-center gap-4">
@@ -44,15 +44,15 @@ const index = () => {
             </Link>
           </div>
         </div>
-        <div className="col-span-12 md:col-span-6 lg:col-span-4">
-          <div className="flex flex-col gap-8 items-center">
+        <div className="col-span-12 md:col-span-6 lg:col-span-4 w-[200px] xs:w-auto mx-auto">
+          <div className="w-full flex flex-col gap-8 items-center">
             <Link href="/whats-happening">
               <Image
                 alt="event's image"
                 src="/img/events2.jpg"
                 width={500}
                 height={500}
-                className="flex-1 cursor-pointer hover:-translate-y-4 duration-300"
+                className="flex-1 !w-[200px] !h-[200px] sm:!w-auto sm:!h-[auto] cursor-pointer hover:-translate-y-4 duration-300"
               />
             </Link>
             <div className="flex items-center gap-4">
@@ -89,15 +89,15 @@ const index = () => {
             </Link>
           </div>
         </div>
-        <div className="col-span-12 md:col-span-6 lg:col-span-4">
-          <div className="flex flex-col gap-8 items-center">
+        <div className="col-span-12 md:col-span-6 lg:col-span-4 w-[200px] xs:w-auto mx-auto">
+          <div className="w-full flex flex-col gap-8 items-center">
             <Link href="/whats-happening">
               <Image
                 alt="event's image"
                 src="/img/events2.jpg"
                 width={500}
                 height={500}
-                className="flex-1 cursor-pointer hover:-translate-y-4 duration-300"
+                className="flex-1 !w-[200px] !h-[200px] sm:!w-auto sm:!h-[auto] cursor-pointer hover:-translate-y-4 duration-300"
               />
             </Link>
 
@@ -129,15 +129,15 @@ const index = () => {
             </Link>
           </div>
         </div>
-        <div className="col-span-12 md:col-span-6 lg:col-span-4">
-          <div className="flex flex-col gap-8 items-center">
+        <div className="col-span-12 md:col-span-6 lg:col-span-4 w-[200px] xs:w-auto mx-auto">
+          <div className="w-full flex flex-col gap-8 items-center">
             <Link href="/whats-happening">
               <Image
                 alt="event's image"
                 src="/img/event1.jpg"
                 width={500}
                 height={500}
-                className="flex-1 cursor-pointer hover:-translate-y-4 duration-300"
+                className="flex-1 !w-[200px] !h-[200px] md:!w-auto md:!h-[auto] cursor-pointer hover:-translate-y-4 duration-300"
               />
             </Link>
             <div className="flex items-center gap-4">
@@ -168,15 +168,15 @@ const index = () => {
             </Link>
           </div>
         </div>
-        <div className="col-span-12 md:col-span-6 lg:col-span-4">
-          <div className="flex flex-col gap-8 items-center">
+        <div className="col-span-12 md:col-span-6 lg:col-span-4 w-[200px] xs:w-auto mx-auto">
+          <div className="w-full flex flex-col gap-8 items-center">
             <Link href="/whats-happening">
               <Image
                 alt="event's image"
                 src="/img/events2.jpg"
                 width={500}
                 height={500}
-                className="flex-1 cursor-pointer hover:-translate-y-4 duration-300"
+                className="flex-1 !w-[200px] !h-[200px] sm:!w-auto sm:!h-[auto] cursor-pointer hover:-translate-y-4 duration-300"
               />
             </Link>
             <div className="flex items-center gap-4">
@@ -213,15 +213,15 @@ const index = () => {
             </Link>
           </div>
         </div>
-        <div className="col-span-12 md:col-span-6 lg:col-span-4">
-          <div className="flex flex-col gap-8 items-center">
+        <div className="col-span-12 md:col-span-6 lg:col-span-4 w-[200px] xs:w-auto mx-auto">
+          <div className="w-full flex flex-col gap-8 items-center">
             <Link href="/whats-happening">
               <Image
                 alt="event's image"
                 src="/img/events2.jpg"
                 width={500}
                 height={500}
-                className="flex-1 cursor-pointer hover:-translate-y-4 duration-300"
+                className="flex-1 !w-[200px] !h-[200px] sm:!w-auto sm:!h-[auto] cursor-pointer hover:-translate-y-4 duration-300"
               />
             </Link>
 
@@ -253,15 +253,15 @@ const index = () => {
             </Link>
           </div>
         </div>
-        <div className="col-span-12 md:col-span-6 lg:col-span-4">
-          <div className="flex flex-col gap-8 items-center">
+        <div className="col-span-12 md:col-span-6 lg:col-span-4 w-[200px] xs:w-auto mx-auto">
+          <div className="w-full flex flex-col gap-8 items-center">
             <Link href="/whats-happening">
               <Image
                 alt="event's image"
                 src="/img/event1.jpg"
                 width={500}
                 height={500}
-                className="flex-1 cursor-pointer hover:-translate-y-4 duration-300"
+                className="flex-1 !w-[200px] !h-[200px] md:!w-auto md:!h-[auto] cursor-pointer hover:-translate-y-4 duration-300"
               />
             </Link>
             <div className="flex items-center gap-4">
@@ -292,15 +292,15 @@ const index = () => {
             </Link>
           </div>
         </div>
-        <div className="col-span-12 md:col-span-6 lg:col-span-4">
-          <div className="flex flex-col gap-8 items-center">
+        <div className="col-span-12 md:col-span-6 lg:col-span-4 w-[200px] xs:w-auto mx-auto">
+          <div className="w-full flex flex-col gap-8 items-center">
             <Link href="/whats-happening">
               <Image
                 alt="event's image"
                 src="/img/events2.jpg"
                 width={500}
                 height={500}
-                className="flex-1 cursor-pointer hover:-translate-y-4 duration-300"
+                className="flex-1 !w-[200px] !h-[200px] sm:!w-auto sm:!h-[auto] cursor-pointer hover:-translate-y-4 duration-300"
               />
             </Link>
             <div className="flex items-center gap-4">
@@ -337,15 +337,15 @@ const index = () => {
             </Link>
           </div>
         </div>
-        <div className="col-span-12 md:col-span-6 lg:col-span-4">
-          <div className="flex flex-col gap-8 items-center">
+        <div className="col-span-12 md:col-span-6 lg:col-span-4 w-[200px] xs:w-auto mx-auto">
+          <div className="w-full flex flex-col gap-8 items-center">
             <Link href="/whats-happening">
               <Image
                 alt="event's image"
                 src="/img/events2.jpg"
                 width={500}
                 height={500}
-                className="flex-1 cursor-pointer hover:-translate-y-4 duration-300"
+                className="flex-1 !w-[200px] !h-[200px] sm:!w-auto sm:!h-[auto] cursor-pointer hover:-translate-y-4 duration-300"
               />
             </Link>
 
