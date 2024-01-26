@@ -326,3 +326,17 @@ a {
   text-shadow: 1px 1px 2px #1a1a1a, -1px -1px 2px #474747;
   margin-bottom: 20px;
 }
+
+/*  */
+
+.brightness-parent::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 40;
+  background: inherit;
+  filter: brightness(65%); /* Adjust the opacity as needed */
+}
