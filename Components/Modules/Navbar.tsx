@@ -47,8 +47,8 @@ const Navbar = () => {
 
   const [isDrawerMenuOpened, setIsDrawerMenuOpened] = useState(false);
   return (
-    <div className="sticky top-0 bg-white w-full p-8 shadow-xl !z-50 dark:bg-zinc-900">
-      <div className="flex justify-between flex-wrap lg:gap-0 items-center">
+    <div className="sticky top-0  bg-white w-full p-8 shadow-xl !z-50 dark:bg-zinc-900">
+      <div className="flex justify-center md:justify-between flex-wrap gap-12 lg:gap-0 items-center">
         <div className="flex items-center gap-4">
           <div
             className="lg:w-56 cursor-pointer"
@@ -88,7 +88,7 @@ const Navbar = () => {
           </Link>
 
           <Link href="/">
-            <h1 className="hidden dark:block dark:text-white font-Poppins_Black text-5xl tracking-widest">
+            <h1 className="hidden dark:block dark:text-white font-Poppins_Black text-3xl md:text-5xl tracking-widest">
               SOUL K/TCHEN
             </h1>
           </Link>

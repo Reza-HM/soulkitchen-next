@@ -17,7 +17,6 @@ const Gallery = () => {
               SPICED POACHED PEARS
             </p>
           </div>
-
           <div className="flex justify-between items-center gap-2">
             <div className="group relative cursor-pointer flex-1">
               <Image
