@@ -1,6 +1,10 @@
+import Header from "@/Components/Templates/Shop/Header";
+
 const Shop = () => {
   return (
-    <div>Shop</div>
-  )
-}
-export default Shop
+    <div>
+      <Header />
+    </div>
+  );
+};
+export default Shop;
