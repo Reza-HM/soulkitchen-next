@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const index = () => {
+const Gallery = () => {
   return (
     <div className="container px-0 mt-40">
       <div className="flex justify-center items-center text-center md:text-start flex-col gap-6">
@@ -176,4 +176,4 @@ const index = () => {
     </div>
   );
 };
-export default index;
+export default Gallery;

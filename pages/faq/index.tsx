@@ -1,7 +1,7 @@
 import Accordion from "@/Components/Templates/Faq/Accordion";
 import Header from "@/Components/Templates/Faq/Header";
 
-const index = () => {
+const FAQ = () => {
   return (
     <div>
       <Header />
@@ -9,4 +9,4 @@ const index = () => {
     </div>
   );
 };
-export default index;
+export default FAQ;

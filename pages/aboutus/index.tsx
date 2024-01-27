@@ -3,7 +3,7 @@ import Header from "@/Components/Templates/Aboutus/Header";
 import Philosophy from "@/Components/Templates/Aboutus/Philosophy";
 import Recipe from "@/Components/Templates/Aboutus/Recipe";
 
-const Index = () => {
+const AboutUs = () => {
   return (
     <div>
       <Header />
@@ -13,4 +13,4 @@ const Index = () => {
     </div>
   );
 };
-export default Index;
+export default AboutUs;

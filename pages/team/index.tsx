@@ -4,7 +4,7 @@ import HeadChef from "@/Components/Templates/Team/HeadChef";
 import Header from "@/Components/Templates/Team/Header";
 import ServiceManager from "@/Components/Templates/Team/ServiceManager";
 
-const index = () => {
+const Team = () => {
   return (
     <div>
       <Header />
@@ -15,4 +15,4 @@ const index = () => {
     </div>
   );
 };
-export default index;
+export default Team;

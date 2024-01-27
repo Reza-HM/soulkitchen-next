@@ -1,7 +1,7 @@
 import BookingForm from "@/Components/Templates/Booking/BookingForm";
 import Header from "@/Components/Templates/Booking/Header";
 
-const index = () => {
+const Booking = () => {
   return (
     <div>
       <Header />
@@ -9,4 +9,4 @@ const index = () => {
     </div>
   );
 };
-export default index;
+export default Booking;

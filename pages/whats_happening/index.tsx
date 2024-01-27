@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const index = () => {
+const WhatsHappening = () => {
   return (
     <div className="container p-8 md:p-20 mt-4 md:mt-20">
       <div className="grid grid-cols-12 items-center gap-4 md:gap-12">
@@ -381,4 +381,4 @@ const index = () => {
     </div>
   );
 };
-export default index;
+export default WhatsHappening;
