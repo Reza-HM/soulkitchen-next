@@ -1,7 +1,7 @@
 const SignUp = () => {
   return (
     <div className="container p-20 mt-40">
-      <div className="bg-zinc-200/40 p-20 flex flex-col items-center gap-12">
+      <div className="bg-zinc-200/40 p-20 flex flex-col items-center gap-12 rounded-xl">
         <h2 className="font-PlayfairDisplay text-5xl font-semibold tracking-wider">
           Keep Up to Date with Soul Kitchen
         </h2>
