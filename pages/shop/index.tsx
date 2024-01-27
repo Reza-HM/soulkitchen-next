@@ -1,5 +1,6 @@
 import Header from "@/Components/Templates/Shop/Header";
 import NewProducts from "@/Components/Templates/Shop/NewProducts";
+import Recommendation from "@/Components/Templates/Shop/Recommendation";
 import Services from "@/Components/Templates/Shop/Services";
 
 const Shop = () => {
@@ -8,6 +9,7 @@ const Shop = () => {
       <Header />
       <Services />
       <NewProducts />
+      <Recommendation />
     </div>
   );
 };

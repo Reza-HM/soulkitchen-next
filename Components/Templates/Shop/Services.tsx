@@ -12,7 +12,7 @@ const Services = () => {
           <h3 className="text-3xl font-PlayfairDisplay font-semibold">
             We deliver to your home
           </h3>
-          <p className="text-center text-zinc-500 max-w-lg tracking-wide">
+          <p className="animate-fade-right text-center text-zinc-500 max-w-lg tracking-wide">
             Order on-demand or schedule delivery up to a week in advance.
           </p>
         </div>
@@ -21,16 +21,16 @@ const Services = () => {
           <h3 className="text-3xl font-PlayfairDisplay font-semibold">
             Made with love
           </h3>
-          <p className="text-center text-zinc-500 max-w-lg tracking-wide">
+          <p className="animate-fade-right text-center text-zinc-500 max-w-lg tracking-wide">
             Taste the difference.
           </p>
         </div>
         <div className="w-full md:flex-1 md:w-1/4 flex flex-col items-center gap-8">
-          <PiPlantLight className="text-6xl" />
+          <PiPlantLight animate-fade-right className="text-6xl" />
           <h3 className="text-3xl font-PlayfairDisplay font-semibold">
             From farm to fork
           </h3>
-          <p className="text-center text-zinc-500 max-w-lg tracking-wide">
+          <p className="animate-fade-right text-center text-zinc-500 max-w-lg tracking-wide">
             An exceptional meal experience starts with only the best
             ingredients.
           </p>
@@ -40,7 +40,7 @@ const Services = () => {
           <h3 className="text-3xl font-PlayfairDisplay font-semibold">
             High quality seafood, no less
           </h3>
-          <p className="text-center text-zinc-500 max-w-lg tracking-wide">
+          <p className="animate-fade-right text-center text-zinc-500 max-w-lg tracking-wide">
             Experience the best, seasonal seafood in your home
           </p>
         </div>

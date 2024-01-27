@@ -28,12 +28,14 @@ const NewProducts = () => {
           </div>
         </div>
       </div>
-      <Link
-        href="/allProducts"
-        className="mt-20 tracking-widest cursor-pointer text-zinc-500 text-2xl border-2 border-zinc-500 w-60 mx-auto p-4 flex justify-center items-center hover:bg-zinc-400 hover:text-white hover:border-zinc-400 duration-300"
-      >
-        SHOP ALL
-      </Link>
+      <div className="">
+        <Link
+          href="/allProducts"
+          className="mt-32 tracking-widest cursor-pointer text-zinc-500 text-2xl border-2 border-zinc-500 w-60 mx-auto p-4 flex justify-center items-center hover:bg-zinc-400 hover:text-white hover:border-zinc-400 duration-300"
+        >
+          SHOP ALL
+        </Link>
+      </div>
     </div>
   );
 };

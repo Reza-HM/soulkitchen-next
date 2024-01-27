@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const ProductBox = () => {
   return (
-    <div className="group flex flex-col items-center justify-center gap-8 p-8">
+    <div className="animate-fade-up group flex flex-col items-center justify-center gap-8 p-8">
       <Link href="/product/1">
         <Image
           alt="product's img"
