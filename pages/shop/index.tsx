@@ -11,7 +11,7 @@ const Shop = () => {
       <Header />
       <Services />
       <NewProducts />
-      <Recommendation />
+      <Recommendation />  
       <BestSellers />
       <SignUp />
     </div>

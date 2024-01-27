@@ -10,9 +10,9 @@ const Recommendation = () => {
           src="/img/recommend.jpg"
           width={800}
           height={800}
-          className="w-full md:w-1/2 flex-grow h-[800px]"
+          className="w-full md:w-1/2 flex-grow !h-[800px] !min-h-[800px]"
         />
-        <div className="w-full md:w-1/2 bg-zinc-900 text-white flex-grow flex justify-center items-center h-[800px]">
+        <div className="w-full md:w-1/2 bg-zinc-900 text-white flex-grow flex justify-center items-center !h-[800px] !min-h-[800px]">
           <div className="flex flex-col items-start gap-16 p-40">
             <h3 className="text-2xl tracking-widest font-semibold">
               CHEF’S CHOICE
