@@ -1,6 +1,6 @@
 const SignUp = () => {
   return (
-    <div className="container p-20 mt-40">
+    <div className="container my-40">
       <div className="bg-zinc-200/40 p-20 flex flex-col items-center gap-12 rounded-xl">
         <h2 className="font-PlayfairDisplay text-5xl font-semibold tracking-wider">
           Keep Up to Date with Soul Kitchen
@@ -10,7 +10,7 @@ const SignUp = () => {
           SoulKitchen.
         </p>
         <div className="flex flex-col items-center gap-4 neumorphic-form">
-          <form action="" className="flex gap-4">
+          <form action="" className="flex gap-4 flex-wrap">
             <input
               type="text"
               className="p-4 border-1 !border-zinc-800 text-zinc-700 rounded-xl neumorphic-input"

@@ -4,7 +4,7 @@ import Link from "next/link";
 const BestSellers = () => {
   return (
     <div className="mt-32">
-      <div className="!h-[700px] !min-h-[700px]">
+      <div className="lg:!h-[700px] lg:!min-h-[700px]">
         <div className="relative before:absolute before:w-1 before:h-20 before:block before:!-bottom-28 before:!bg-zinc-400 flex flex-col items-center gap-8">
           <h4 className="text-zinc-400 text-2xl font-semibold tracking-widest">
             DISCOVER OUR
