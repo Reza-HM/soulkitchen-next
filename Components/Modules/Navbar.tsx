@@ -83,7 +83,7 @@ const Navbar = () => {
               src="/img/header-logo.png"
               width={250}
               height={250}
-              className="dark:hidden"
+              className="dark:hidden w-[150px] xs:w-[200px] sm:w-[250px] md:w-[300px] lg:w-auto"
             />
           </Link>
 
