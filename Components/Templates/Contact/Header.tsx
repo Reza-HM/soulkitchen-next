@@ -4,20 +4,20 @@ import Link from "next/link";
 const Header = () => {
   return (
     <div className="flex flex-wrap justify-between">
-      <div className="w-full md:w-1/2 md:flex-1 flex flex-col gap-12 justify-center items-center">
+      <div className="w-full md:w-1/2 md:flex-1 flex flex-col gap-12 justify-center items-center p-12">
         <h2 className="text-7xl font-bold font-PlayfairDisplay">Find Us</h2>
         <h4 className="text-3xl font-bold mt-7">WHERE</h4>
         <div className="flex flex-col gap-2 items-center">
           <span className="tracking-wider">317 Pacific C HwyHuntington</span>
           <span className="tracking-wider">CA 92648</span>
         </div>
-        <div className="flex items-center gap-12">
-          <button className="w-full xs:w-96 tracking-widest border self-start py-4 px-8 bg-black text-zinc-400 dark:bg-gray-900 dark:text-gray-400 cursor-pointer hover:bg-zinc-500 hover:text-zinc-300 dark:hover:bg-zinc-500 dark:hover:text-zinc-300 duration-300">
+        <div className="flex items-center flex-wrap gap-12">
+          <button className="w-full sm:w-96 tracking-widest border self-start py-4 px-8 bg-black text-zinc-400 dark:bg-gray-900 dark:text-gray-400 cursor-pointer hover:bg-zinc-500 hover:text-zinc-300 dark:hover:bg-zinc-500 dark:hover:text-zinc-300 duration-300">
             VIEW MAP{" "}
           </button>
           <Link
             href="/booking"
-            className="hidden lg:flex justify-center items-center tracking-widest !font-bold py-4 px-8 cursor-pointer border-2 !border-black dark:!border-gray-400 hover:bg-gray-400 hover:text-white hover:!border-gray-400 duration-300"
+            className="w-full sm:w-96 flex justify-center items-center tracking-widest !font-bold py-4 px-8 cursor-pointer border-2 !border-black dark:!border-gray-400 hover:bg-gray-400 hover:text-white hover:!border-gray-400 duration-300"
           >
             BOOK YOUR TABLE
           </Link>

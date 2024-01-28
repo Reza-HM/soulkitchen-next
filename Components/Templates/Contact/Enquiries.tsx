@@ -12,7 +12,7 @@ const Enquiries = () => {
           height={800}
         />
       </div>
-      <div className="w-full md:w-1/2 md:flex-1 flex justify-center items-center">
+      <div className="w-full md:w-1/2 md:flex-1 flex justify-center items-center p-8">
         <div className="flex flex-col items-center gap-8">
           <h2 className="text-6xl font-PlayfairDisplay font-bold !py-8 px-20">
             Enquiries
