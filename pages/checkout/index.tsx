@@ -4,7 +4,7 @@ const Checkout = () => {
   const [expandCouponCode, setExpandCouponCode] = useState(false);
   return (
     <div className="container p-20">
-      <h1 className="tracking-widest text-7xl font-bold text-center mb-20">
+      <h1 className="tracking-widest text-4xl sm:text-5xl lg:text-7xl font-bold text-center mb-20">
         Checkout
       </h1>
       <div className="">
@@ -37,7 +37,7 @@ const Checkout = () => {
           </button>
         </div>
       </div>
-      <div className="flex  flex-wrap justify-between mt-16 gap-8 md:gap-32">
+      <div className="flex  flex-wrap justify-between mt-16 gap-32">
         <div className="w-full md:w-1/2 md:flex-1">
           <div className="flex flex-col gap-8">
             <h2 className="font-PlayfairDisplay text-4xl font-semibold tracking-widest">
@@ -48,7 +48,7 @@ const Checkout = () => {
               className="flex
             flex-col gap-8"
             >
-              <div className="flex items-center justify-between gap-20">
+              <div className="flex items-center flex-wrap justify-between gap-8 md:gap-20">
                 <div className="flex flex-col gap-2 w-full md:w-1/2 md:flex-1">
                   <label htmlFor="" className="text-xl tracking-widest">
                     FIRST NAME *
