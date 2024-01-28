@@ -37,7 +37,7 @@ const Checkout = () => {
           </button>
         </div>
       </div>
-      <div className="flex items-center flex-wrap justify-between mt-16 gap-8 md:gap-32">
+      <div className="flex  flex-wrap justify-between mt-16 gap-8 md:gap-32">
         <div className="w-full md:w-1/2 md:flex-1">
           <div className="flex flex-col gap-8">
             <h2 className="font-PlayfairDisplay text-4xl font-semibold tracking-widest">
@@ -141,6 +141,42 @@ const Checkout = () => {
             <h2 className="font-PlayfairDisplay text-4xl font-semibold tracking-widest">
               Your order
             </h2>
+            <div className=" bg-zinc-200/50 p-12 rounded-md">
+              <div className="flex flex-col gap-12">
+                <div className="flex items-center justify-between">
+                  <span className="text-2xl font-bold">Product</span>
+                  <span className="text-2xl font-bold">Subtotal</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="">Seared Salmon × 1 </span>
+                  <span>$12.00</span>
+                </div>
+              </div>
+              <span className="w-full h-px bg-zinc-300 block my-12"></span>
+              <div className="flex flex-col gap-12">
+                <div className="flex items-center justify-between">
+                  <span>Subtotal</span>
+                  <span>$12.00</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="">Total </span>
+                  <span className="text-4xl font-bold">$12.00</span>
+                </div>
+              </div>
+              <p className="mt-20 text-2xl leading-loose tracking-wider max-w-4xl mx-auto text-center">
+                Sorry, it seems that there are no available payment methods.
+                Please contact us if you require assistance or wish to make
+                alternate arrangements.
+              </p>
+              <p className="mt-20 text-xl leading-loose tracking-wider max-w-4xl mx-auto text-center">
+                Your personal data will be used to process your order, support
+                your experience throughout this website, and for other purposes
+                described in our privacy policy.
+              </p>
+              <div className="w-full xs:w-96 float-right mt-12 text-center rounded-md border py-4 px-8 bg-black text-zinc-400 dark:bg-gray-900 dark:text-gray-400 cursor-pointer hover:bg-zinc-500 hover:text-zinc-300 dark:hover:bg-zinc-500 dark:hover:text-zinc-300 duration-300">
+                PLACE ORDER
+              </div>
+            </div>
           </div>
         </div>
       </div>
