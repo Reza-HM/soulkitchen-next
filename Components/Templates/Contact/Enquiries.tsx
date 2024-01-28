@@ -5,7 +5,7 @@ const Enquiries = () => {
     <div className="flex flex-wrap flex-col-reverse md:flex-row justify-between">
       <div className="w-full md:w-1/2 md:flex-1">
         <Image
-          alt="about us chef's photo"
+          alt="enquiries photo"
           src="/img/enq.jpg"
           className="w-full h-full object-cover object-center !flex-1"
           width={800}

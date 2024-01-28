@@ -35,7 +35,7 @@ const Header = () => {
       <div className="w-full md:w-1/2 md:flex-1">
         <div className="">
           <Image
-            alt="about us header's photo"
+            alt="contact page photo"
             src="/img/place1.jpg"
             className="w-full h-full object-cover object-center"
             width={800}
