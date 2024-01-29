@@ -2,9 +2,9 @@ import Image from "next/image";
 
 const Header = () => {
   return (
-    <div className="flex justify-between">
-      <div className="flex-1 bg-zinc-800 flex justify-center items-center">
-        <p className="line-clamp-5 text-center leading-loose text-3xl text-white p-20 ">
+    <div className="flex flex-col-reverse md:flex-row flex-wrap justify-between">
+      <div className="w-full md:flex-1 md:w-1/2 bg-zinc-800 flex justify-center items-center">
+        <p className="md:line-clamp-5 text-center leading-loose text-3xl text-white p-20 ">
           Our daily changing menu represents the best of what our local markets
           have to offer. Our passion for sourcing fresh ingredients from farmers
           and suppliers we know, combining with traditional flavors and
@@ -12,7 +12,7 @@ const Header = () => {
           greatest joy.
         </p>
       </div>
-      <div className="flex-1">
+      <div className="w-full md:flex-1 md:w-1/2">
         <div className="relative">
           <Image
             alt="about us header's photo"

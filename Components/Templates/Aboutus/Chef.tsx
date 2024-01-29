@@ -2,8 +2,8 @@ import Image from "next/image";
 
 const Chef = () => {
   return (
-    <div className="flex justify-between">
-      <div className="flex-1 w-full md:w-1/2">
+    <div className="flex flex-wrap justify-between">
+      <div className="md:flex-1 w-full md:w-1/2">
         <div className="relative">
           <Image
             alt="about us chef's photo"
@@ -15,19 +15,19 @@ const Chef = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/70"></div>
         </div>
       </div>
-      <div className="flex-1 w-full md:w-1/2 flex justify-center items-center">
+      <div className="md:flex-1 w-full md:w-1/2 flex justify-center items-center">
         <p className="-rotate-90 line-clamp-1 tracking-widest">MEET THE TEAM</p>
         <div className="flex-[10]">
           <h2 className="text-6xl font-PlayfairDisplay_Italic font-bold !py-10 px-20">
             Chef Milo Fernandez
           </h2>
-          <p className="line-clamp-5 text-justify leading-loose text-2xl !py-10 px-20">
+          <p className="line-clamp-2 xl:line-clamp-5 text-justify leading-loose text-2xl !py-10 px-20">
             Zesty tofu pad thai ginger lemongrass agave green tea cocoa ginger
             carrot spiced juice grains Thai basil curry golden cayenne pepper
             cool spring mocha chocolate blueberry pops raspberries ultimate Thai
             super chili cauliflower lemon.
           </p>
-          <p className="line-clamp-5 text-justify leading-loose text-2xl !py-10 px-20">
+          <p className="line-clamp-2 xl:line-clamp-5 text-justify leading-loose text-2xl !py-10 px-20">
             Thai dragon pepper coconut rice Indian spiced apples cilantro
             springtime strawberry sleepy morning tea double dark chocolate
             casserole cauliflower hearty burritos green pepper miso dressing
