@@ -8,62 +8,62 @@ const Press = () => {
           In The Press
         </h2>
       </div>
-      <div className="grid grid-cols-10 place-items-center items-center gap-20 mt-40 dark:bg-zinc-600 p-20 rounded-xl">
+      <div className="flex flex-wrap justify-center items-center gap-20 mt-40 dark:bg-zinc-600 p-8 md:p-20 rounded-xl">
         <Image
           alt="press's photo"
           src="/img/press1.png"
           width={150}
           height={150}
-          className="col-span-2 cursor-pointer"
+          className="cursor-pointer"
         />
         <Image
           alt="press's photo"
           src="/img/press2.png"
           width={150}
           height={150}
-          className="col-span-2 cursor-pointer"
+          className="cursor-pointer"
         />
         <Image
           alt="press's photo"
           src="/img/press3.png"
           width={150}
           height={150}
-          className="col-span-2 cursor-pointer"
+          className="cursor-pointer"
         />
         <Image
           alt="press's photo"
           src="/img/press4.png"
           width={150}
           height={150}
-          className="col-span-2 cursor-pointer"
+          className="cursor-pointer"
         />
         <Image
           alt="press's photo"
           src="/img/press5.png"
           width={150}
           height={150}
-          className="col-span-2 cursor-pointer"
+          className="cursor-pointer"
         />
         <Image
           alt="press's photo"
           src="/img/press6.png"
           width={150}
           height={150}
-          className="col-span-4 cursor-pointer"
+          className=" cursor-pointer"
         />
         <Image
           alt="press's photo"
           src="/img/press7.png"
           width={150}
           height={150}
-          className="col-span-2 cursor-pointer"
+          className="cursor-pointer"
         />
         <Image
           alt="press's photo"
           src="/img/press8.png"
           width={150}
           height={150}
-          className="col-span-4 cursor-pointer"
+          className="cursor-pointer"
         />
       </div>
     </div>

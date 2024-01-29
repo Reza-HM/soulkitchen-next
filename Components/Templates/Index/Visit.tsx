@@ -9,7 +9,7 @@ const Visit = () => {
           Visit Us
         </h2>
       </div>
-      <div className="flex justify-between items-center gap-12 mt-40">
+      <div className="flex justify-between flex-wrap items-center gap-12 mt-40">
         <div className="w-full md:w-1/2 md:flex-1">
           <div className="relative">
             <div className="relative">
