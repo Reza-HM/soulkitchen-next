@@ -5,7 +5,7 @@ const WinesMenuTemplate = () => {
         <div className="col-span-12 xl:col-span-6">
           <div className="p-12 border-2 rounded-xl text-start border-zinc-700 dark:!border-white">
             <div className="flex justify-between gap-2">
-              <h2 className="text-3xl font-PlayfairDisplay md:text-5xl tracking-widest">
+              <h2 className="text-2xl font-PlayfairDisplay md:text-5xl tracking-widest">
                 RED WINES
               </h2>
               <div className="flex items-center gap-8">
@@ -64,7 +64,9 @@ const WinesMenuTemplate = () => {
                 </div>
               </li>
               <li className="flex justify-between gap-4">
-                <p className="text-xl md:text-3xl">Chateau La Mission Haut Brion 2015</p>
+                <p className="text-xl md:text-3xl">
+                  Chateau La Mission Haut Brion 2015
+                </p>
 
                 <div className="flex items-center gap-20 mr-4">
                   <span className="text-zinc-400 text-xl md:text-2xl">9</span>
@@ -75,7 +77,7 @@ const WinesMenuTemplate = () => {
           </div>
 
           <div className="!mt-32 p-12 text-start">
-            <h2 className="text-3xl font-PlayfairDisplay md:text-5xl tracking-widest">
+            <h2 className="text-2xl font-PlayfairDisplay md:text-5xl tracking-widest">
               SAKE
             </h2>
             <ul className="flex flex-col gap-12 mt-20">
@@ -127,7 +129,7 @@ const WinesMenuTemplate = () => {
         <div className="col-span-12 xl:col-span-6 flex flex-col justify-center">
           <div className="p-12 text-start">
             <div className="flex justify-between gap-2">
-              <h2 className="text-3xl font-PlayfairDisplay md:text-5xl tracking-widest">
+              <h2 className="text-2xl font-PlayfairDisplay md:text-5xl tracking-widest">
                 WHITE WINES
               </h2>
               <div className="flex items-center gap-8">
@@ -158,7 +160,9 @@ const WinesMenuTemplate = () => {
                 </div>
               </li>
               <li className="flex justify-between gap-4">
-                <p className="text-xl md:text-3xl">Chardonnay Laguna, California 2017</p>
+                <p className="text-xl md:text-3xl">
+                  Chardonnay Laguna, California 2017
+                </p>
 
                 <div className="flex items-center gap-20 mr-4">
                   <span className="text-zinc-400 text-xl md:text-2xl">7</span>
@@ -166,7 +170,9 @@ const WinesMenuTemplate = () => {
                 </div>
               </li>
               <li className="flex justify-between gap-4">
-                <p className="text-xl md:text-3xl">Alpha Omega Chardonnay 2017</p>
+                <p className="text-xl md:text-3xl">
+                  Alpha Omega Chardonnay 2017
+                </p>
 
                 <div className="flex items-center gap-20 mr-4">
                   <span className="text-zinc-400 text-xl md:text-2xl">5</span>
@@ -174,7 +180,9 @@ const WinesMenuTemplate = () => {
                 </div>
               </li>
               <li className="flex justify-between gap-4">
-                <p className="text-xl md:text-3xl">Ponzi Vineyards Pinot Gris 2018</p>
+                <p className="text-xl md:text-3xl">
+                  Ponzi Vineyards Pinot Gris 2018
+                </p>
 
                 <div className="flex items-center gap-20 mr-4">
                   <span className="text-zinc-400 text-xl md:text-2xl">6</span>
@@ -182,7 +190,9 @@ const WinesMenuTemplate = () => {
                 </div>
               </li>
               <li className="flex justify-between gap-4">
-                <p className="text-xl md:text-3xl">Kim Crawford Sauvignon Blank</p>
+                <p className="text-xl md:text-3xl">
+                  Kim Crawford Sauvignon Blank
+                </p>
 
                 <div className="flex items-center gap-20 mr-4">
                   <span className="text-zinc-400 text-xl md:text-2xl">6</span>
@@ -203,7 +213,7 @@ const WinesMenuTemplate = () => {
           </div>
           <div className="!mt-20 p-12 text-start rounded-xl bg-zinc-800 dark:bg-zinc-900 text-white">
             <div className="flex justify-between gap-2">
-              <h2 className="text-3xl font-PlayfairDisplay md:text-5xl tracking-widest">
+              <h2 className="text-2xl font-PlayfairDisplay md:text-5xl tracking-widest">
                 SPARKLING WINES
               </h2>
               <div className="flex items-center gap-8">
@@ -214,7 +224,9 @@ const WinesMenuTemplate = () => {
 
             <ul className="flex flex-col gap-12 mt-20">
               <li className="flex justify-between gap-4">
-                <p className="text-xl md:text-3xl">Castello del Poggio Moscato d’Asti</p>
+                <p className="text-xl md:text-3xl">
+                  Castello del Poggio Moscato d’Asti
+                </p>
 
                 <div className="flex items-center gap-20 mr-4">
                   <span className="text-zinc-400 text-xl md:text-2xl">7</span>
@@ -248,7 +260,9 @@ const WinesMenuTemplate = () => {
                 </div>
               </li>
               <li className="flex justify-between gap-4">
-                <p className="text-xl md:text-3xl">Villa Sandi Prosecco Doc Rosé</p>
+                <p className="text-xl md:text-3xl">
+                  Villa Sandi Prosecco Doc Rosé
+                </p>
 
                 <div className="flex items-center gap-20 mr-4">
                   <span className="text-zinc-400 text-xl md:text-2xl">6</span>

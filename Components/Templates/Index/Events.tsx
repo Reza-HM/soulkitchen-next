@@ -5,15 +5,15 @@ const Events = () => {
   return (
     <div className="container mt-40">
       <div className="relative before:absolute before:w-1 before:h-20 before:block before:!-bottom-28 before:!bg-zinc-400 flex flex-col items-center gap-8">
-        <h4 className="text-zinc-400 text-2xl font-semibold tracking-widest">
+        <h4 className="text-zinc-400 text-2xl font-semibold tracking-widest text-center">
           LATEST NEWS, STORIES AND RECIPES
         </h4>
-        <h2 className="font-PlayfairDisplay font-semibold text-6xl tracking-widest">
+        <h2 className="font-PlayfairDisplay font-semibold text-6xl tracking-widest text-center">
           What’s happening
         </h2>
       </div>
       <div className="mt-40">
-        <div className="flex justify-between items-center gap-12">
+        <div className="flex justify-between flex-wrap items-center gap-12">
           <div className="w-full md:flex-1 md:w-1/3">
             <div className="flex flex-col gap-8 items-center">
               <Link href="/whats-happening">
