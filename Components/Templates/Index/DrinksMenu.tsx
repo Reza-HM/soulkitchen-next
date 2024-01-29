@@ -23,8 +23,8 @@ const DrinksMenu = () => {
   };
 
   return (
-    <div className="container animate-fade-up">
-      <div className="p-8 m-8 flex flex-col gap-16 items-center text-center">
+    <div className="md:container animate-fade-up mt-20">
+      <div className="md:p-8 md:m-8 flex flex-col gap-16 items-center text-center">
         <h2 className="font-PlayfairDisplay text-6xl font-bold">Drinks</h2>
         <p>
           We serve hand-crafted speciality drinks with the best organic

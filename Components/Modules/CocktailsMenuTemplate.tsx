@@ -1,11 +1,11 @@
 const CocktailsMenuTemplate = () => {
   return (
-    <div className="container px-0 bg-black text-white dark:bg-zinc-700 p-20">
+    <div className="w-full md:container px-0 bg-black text-white dark:bg-zinc-700 p-20">
       <h1 className="text-center font-PlayfairDisplay text-6xl tracking-widest">
         COCKTAILS
       </h1>
-      <div className="p-20 grid grid-cols-12 items-center gap-12">
-        <div className="col-span-12 md:col-span-4 space-y-8">
+      <div className="p-20 grid grid-cols-12 items-center gap-2 md:gap-12">
+        <div className="col-span-12 lg:col-span-6 xl:col-span-4 space-y-8">
           <div className="flex flex-col items-center gap-4">
             <h3 className="text-3xl">Ruby Red Dragon</h3>
             <span className="text-zinc-400">
@@ -29,7 +29,7 @@ const CocktailsMenuTemplate = () => {
             <p className="text-zinc-400">11</p>
           </div>
         </div>
-        <div className="col-span-12 md:col-span-4 space-y-8">
+        <div className="col-span-12 lg:col-span-6 xl:col-span-4 space-y-8">
           <div className="flex flex-col items-center gap-4">
             <h3 className="text-3xl">Watermelon Mint Lemonade</h3>
             <span className="text-zinc-400">
@@ -55,7 +55,7 @@ const CocktailsMenuTemplate = () => {
             <p className="text-zinc-400">12</p>
           </div>
         </div>
-        <div className="col-span-12 md:col-span-4 space-y-8">
+        <div className="col-span-12 lg:col-span-12 xl:col-span-4 space-y-8">
           <div className="flex flex-col items-center gap-4">
             <h3 className="text-3xl">Mango Chili Martini</h3>
             <span className="text-zinc-400">
