@@ -3,7 +3,7 @@ import Image from "next/image";
 const Board = () => {
   return (
     <div className="container my-20">
-      <div className="flex justify-between items-center gap-12">
+      <div className="flex justify-between flex-wrap gap-12">
         <div className="w-full md:w-1/2 md:flex-1">
           <div className="relative">
             <div className="relative">
@@ -12,7 +12,7 @@ const Board = () => {
                 src="/img/chief2.jpg"
                 width={800}
                 height={600}
-                className="rounded-xl object-cover"
+                className="rounded-xl object-cover !h-auto md:!h-[60rem] md:!min-h-[60rem]"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/70"></div>
             </div>
@@ -37,7 +37,7 @@ const Board = () => {
                 src="/img/chief1.jpg"
                 width={800}
                 height={600}
-                className="rounded-xl !h-[520px] object-cover"
+                className="rounded-xl object-cover !h-auto md:!h-[60rem] md:!min-h-[60rem]"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/70"></div>
             </div>
