@@ -26,8 +26,8 @@ const Menu = () => {
   };
 
   return (
-    <div className="container animate-fade-up">
-      <div className="p-8 m-8 flex flex-col gap-16 items-center text-center">
+    <div className="md:container animate-fade-up">
+      <div className="md:p-8 md:m-8 flex flex-col gap-16 items-center text-center">
         <h2 className="font-PlayfairDisplay text-6xl font-bold">Our Menu</h2>
         <p>
           Picky eaters, adventurous eaters, whatever your taste, we have

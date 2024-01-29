@@ -3,7 +3,7 @@ import { FaLeaf } from "react-icons/fa";
 
 const AfterDinnerMenuTemplate = () => {
   return (
-    <div className="container px-0">
+    <div className="w-full md:container px-0">
       <div className="p-20 bg-black text-white dark:bg-zinc-700 grid grid-cols-12 gap-12">
         <div className="col-span-12 md:col-span-4">
           <div className="p-12 border-2 rounded-xl text-start border-zinc-700 dark:!border-white">

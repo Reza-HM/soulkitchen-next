@@ -2,7 +2,7 @@ import { FaLeaf } from "react-icons/fa";
 
 const LunchMenuTemplate = () => {
   return (
-    <div className="container px-0">
+    <div className="w-full md:container px-0">
       <div className="p-20 bg-black text-white dark:bg-zinc-700 flex flex-col justify-center items-center gap-12">
         <h2 className="font-PlayfairDisplay text-5xl tracking-widest">
           LUNCH MENU

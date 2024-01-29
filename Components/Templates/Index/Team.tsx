@@ -4,16 +4,16 @@ import Link from "next/link";
 const Team = () => {
   return (
     <div className="w-full md:container !px-0 flex flex-wrap justify-between mb-40">
-      <div className="w-full md:w-1/2 md:flex-1 animate-fade-up !h-[80rem] !min-h-[80rem]">
+      <div className="w-full md:w-1/2 md:flex-1 animate-fade-up !h-auto md:!h-[80rem] md:!min-h-[80rem]">
         <Image
           src="/img/chef.jpg"
           alt="chef's photo"
           width={1000}
           height={1000}
-          className=" !h-[80rem] !min-h-[80rem]"
+          className=" !h-auto md:!h-[80rem] md:!min-h-[80rem]"
         />
       </div>
-      <div className="w-full md:w-1/2 md:flex-1 flex flex-wrap animate-fade-up !h-[80rem] !min-h-[80rem]">
+      <div className="w-full md:w-1/2 md:flex-1 flex flex-wrap animate-fade-up !h-auto md:!h-[80rem] md:!min-h-[80rem]">
         <div className="w-full sm:flex-1 sm:w-1/2 bg-zinc-900 text-white flex flex-col justify-center items-center gap-16 p-12 md:px-20 md:py-0">
           <h3 className="font-PlayfairDisplay font-bold text-center text-4xl">
             Chef Milo Fernandes
@@ -36,14 +36,14 @@ const Team = () => {
           <Image
             src="/img/chefFoods1.jpg"
             alt="chef's food"
-            className="flex-1"
+            className="flex-1 w-full"
             width={500}
             height={500}
           />
           <Image
             src="/img/chefFoods2.jpg"
             alt="chef's food"
-            className="flex-1"
+            className="flex-1 w-full"
             width={500}
             height={500}
           />
