@@ -1,6 +1,62 @@
+import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { ChangeEvent, FormEvent, useState } from "react";
+import swal from "sweetalert";
+
+interface FormData {
+  username: string;
+  email: string;
+  phone: string;
+  password: string;
+}
 
 const Signup = () => {
+  const router = useRouter();
+  const [formData, setFormData] = useState<FormData>({
+    username: "",
+    email: "",
+    phone: "",
+    password: "",
+  });
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const signupUser = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      const res = await axios.post("/api/auth/signup", formData);
+      if (res.status === 201) {
+        swal({
+          title: "شما با موفقیت در سایت عضو شدید.",
+          icon: "success",
+          buttons: ["متوجه شدم", "انتقال به صفحه اصلی"],
+        }).then(() => {
+          setFormData({
+            username: "",
+            email: "",
+            phone: "",
+            password: "",
+          });
+          router.replace("/");
+        });
+
+        // Handle success: Redirect, display success message, etc.
+      } else if (res.status === 422) {
+        swal({
+          title: "این ایمیل در سایت وجود دارد.",
+          icon: "error",
+          buttons: ["متوجه شدم", "ثبت نام مجدد"],
+        });
+      }
+    } catch (err) {
+      console.error("Error in Signing up:", err);
+    }
+  };
+
   return (
     <div className="container my-40">
       <div className="bg-zinc-200/40 p-20 flex flex-col items-center gap-12 rounded-xl">
@@ -15,28 +71,53 @@ const Signup = () => {
           <form
             action=""
             className="flex gap-4 flex-wrap neumorphic-form max-w-4xl"
+            role="form"
           >
             <input
               type="text"
+              name="username"
               className="p-4 border-1 !border-zinc-800 text-zinc-700 rounded-xl neumorphic-input"
               placeholder="ENTER USERNAME"
+              value={formData.username}
+              onChange={handleChange}
+              autoComplete="off"
+              required
             />
             <input
               type="text"
+              name="email"
               className="p-4 border-1 !border-zinc-800 text-zinc-700 rounded-xl neumorphic-input"
               placeholder="ENTER EMAIL"
+              value={formData.email}
+              onChange={handleChange}
+              autoComplete="off"
+              required
             />
             <input
               type="text"
+              name="phone"
               className="p-4 border-1 !border-zinc-800 text-zinc-700 rounded-xl neumorphic-input"
               placeholder="ENTER PHONE"
+              value={formData.phone}
+              onChange={handleChange}
+              autoComplete="off"
+              required
             />
             <input
               type="password"
+              name="password"
               className="p-4 border-1 !border-zinc-800 text-zinc-700 rounded-xl neumorphic-input"
               placeholder="ENTER PASSWORD"
+              value={formData.password}
+              onChange={handleChange}
+              autoComplete="off"
+              required
             />
-            <button className="neumorphic-button !bg-black !text-zinc-500 !w-full hover:!bg-zinc-600 hover:!text-white !duration-300">
+            <button
+              type="submit"
+              onClick={signupUser}
+              className="neumorphic-button !bg-black !text-zinc-500 !w-full hover:!bg-zinc-600 hover:!text-white !duration-300"
+            >
               SIGN UP
             </button>
           </form>

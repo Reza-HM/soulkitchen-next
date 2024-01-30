@@ -36,7 +36,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         .json({ message: "Password must be at least 8 characters long" });
     }
 
-    const usernameRegex: RegExp = /^[a-zA-Z0-6_]+$/;
+    const usernameRegex: RegExp = /^[a-zA-Z0-9_]+$/;
     if (!usernameRegex.test(username)) {
       return res.status(422).json({ message: "Invalid username format" });
     }
