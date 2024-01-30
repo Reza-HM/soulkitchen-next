@@ -128,19 +128,19 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="hidden lg:flex items-center gap-8 flex-wrap">
-          {true ? (
-            <Link
-              href="/signup"
-              className="hidden lg:flex justify-center items-center tracking-widest !font-bold py-2 px-8 cursor-pointer border-2 !border-black dark:!border-gray-400 hover:bg-gray-400 hover:text-white hover:!border-gray-400 duration-300"
-            >
-              SIGN IN / SIGN UP
-            </Link>
-          ) : (
+          {isLoggedIn ? (
             <Link
               href="/booking"
               className="hidden lg:flex justify-center items-center tracking-widest !font-bold py-2 px-8 cursor-pointer border-2 !border-black dark:!border-gray-400 hover:bg-gray-400 hover:text-white hover:!border-gray-400 duration-300"
             >
               BOOK YOUR TABLE
+            </Link>
+          ) : (
+            <Link
+              href="/signup"
+              className="hidden lg:flex justify-center items-center tracking-widest !font-bold py-2 px-8 cursor-pointer border-2 !border-black dark:!border-gray-400 hover:bg-gray-400 hover:text-white hover:!border-gray-400 duration-300"
+            >
+              SIGN IN / SIGN UP
             </Link>
           )}
         </div>
@@ -239,15 +239,17 @@ const Navbar = () => {
             </li>
           )}
 
-          <li
-            className="pt-8 font-bold cursor-pointer text-red-500 hover:pl-4 duration-300"
-            onClick={() => {
-              setIsDrawerMenuOpened(false);
-              logout();
-            }}
-          >
-            LOG OUT
-          </li>
+          {isLoggedIn && (
+            <li
+              className="pt-8 font-bold cursor-pointer text-red-500 hover:pl-4 duration-300"
+              onClick={() => {
+                setIsDrawerMenuOpened(false);
+                logout();
+              }}
+            >
+              LOG OUT
+            </li>
+          )}
         </ul>
       </div>
     </div>
