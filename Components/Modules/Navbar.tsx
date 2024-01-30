@@ -93,12 +93,23 @@ const Navbar = () => {
             </h1>
           </Link>
         </div>
-        <Link
-          href="/booking"
-          className="hidden lg:flex justify-center items-center tracking-widest !font-bold py-2 px-8 cursor-pointer border-2 !border-black dark:!border-gray-400 hover:bg-gray-400 hover:text-white hover:!border-gray-400 duration-300"
-        >
-          BOOK YOUR TABLE
-        </Link>
+        <div className="hidden lg:flex items-center gap-8 flex-wrap">
+          {true ? (
+            <Link
+              href="/signup"
+              className="hidden lg:flex justify-center items-center tracking-widest !font-bold py-2 px-8 cursor-pointer border-2 !border-black dark:!border-gray-400 hover:bg-gray-400 hover:text-white hover:!border-gray-400 duration-300"
+            >
+              SIGN IN / SIGN UP
+            </Link>
+          ) : (
+            <Link
+              href="/booking"
+              className="hidden lg:flex justify-center items-center tracking-widest !font-bold py-2 px-8 cursor-pointer border-2 !border-black dark:!border-gray-400 hover:bg-gray-400 hover:text-white hover:!border-gray-400 duration-300"
+            >
+              BOOK YOUR TABLE
+            </Link>
+          )}
+        </div>
       </div>
       <div
         className={`fixed ${
@@ -106,6 +117,10 @@ const Navbar = () => {
         } top-0 ${
           yScrollPoint > 45.599998474121094 ? "lg:top-0" : "lg:top-16"
         } w-full xs:w-[300px] overflow-y-scroll min-h-screen dark:bg-zinc-900 dark:text-white transition-[left] duration-700 bg-white p-8 flex flex-col gap-20 !z-50`}
+        style={{
+          maxHeight: "80vh",
+          overflowY: "auto",
+        }}
       >
         <div className="flex justify-between items-center">
           <h1 className="font-Poppins_Black text-3xl">Menu</h1>
@@ -123,52 +138,70 @@ const Navbar = () => {
             <Link href="/">HOME</Link>
           </li>
           <li
-            className="pt-8 font-bold"
+            className="pt-8 font-bold  hover:pl-4 duration-300"
+            onClick={() => setIsDrawerMenuOpened(false)}
+          >
+            <Link href="/signup">SIGN IN / SIGN UP</Link>
+          </li>
+          <li
+            className="pt-8 font-bold  hover:pl-4 duration-300"
+            onClick={() => setIsDrawerMenuOpened(false)}
+          >
+            <Link href="/booking">BOOK A TABLE</Link>
+          </li>
+          <li
+            className="pt-8 font-bold  hover:pl-4 duration-300"
             onClick={() => setIsDrawerMenuOpened(false)}
           >
             <Link href="/aboutus">ABOUT</Link>
           </li>
           <li
-            className="pt-8 font-bold"
+            className="pt-8 font-bold  hover:pl-4 duration-300"
             onClick={() => setIsDrawerMenuOpened(false)}
           >
             <Link href="/team">THE TEAM</Link>
           </li>
           <li
-            className="pt-8 font-bold"
+            className="pt-8 font-bold  hover:pl-4 duration-300"
             onClick={() => setIsDrawerMenuOpened(false)}
           >
             <Link href="/menu">THE MENU</Link>
           </li>
           <li
-            className="pt-8 font-bold"
+            className="pt-8 font-bold  hover:pl-4 duration-300"
             onClick={() => setIsDrawerMenuOpened(false)}
           >
             <Link href="/whats_happening">WHAT’S HAPPENING</Link>
           </li>
           <li
-            className="pt-8 font-bold"
+            className="pt-8 font-bold  hover:pl-4 duration-300"
             onClick={() => setIsDrawerMenuOpened(false)}
           >
             <Link href="/gallery">GALLERY</Link>
           </li>
           <li
-            className="pt-8 font-bold"
+            className="pt-8 font-bold  hover:pl-4 duration-300"
             onClick={() => setIsDrawerMenuOpened(false)}
           >
             <Link href="/faq">FAQ</Link>
           </li>
           <li
-            className="pt-8 font-bold"
+            className="pt-8 font-bold  hover:pl-4 duration-300"
             onClick={() => setIsDrawerMenuOpened(false)}
           >
             <Link href="/shop">SHOP</Link>
           </li>
           <li
-            className="pt-8 font-bold"
+            className="pt-8 font-bold  hover:pl-4 duration-300"
             onClick={() => setIsDrawerMenuOpened(false)}
           >
             <Link href="/contact">CONTACT</Link>
+          </li>
+          <li
+            className="pt-8 font-bold cursor-pointer text-red-500 hover:pl-4 duration-300"
+            onClick={() => setIsDrawerMenuOpened(false)}
+          >
+            LOG OUT
           </li>
         </ul>
       </div>
