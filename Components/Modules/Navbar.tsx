@@ -9,6 +9,14 @@ import { FaPlus } from "react-icons/fa";
 import { PiMoonStarsBold } from "react-icons/pi";
 import { RxHamburgerMenu } from "react-icons/rx";
 
+interface UserData {
+  id: string;
+  username: string;
+  email: string;
+  phone: string;
+  role: string;
+}
+
 const Navbar = () => {
   const router = useRouter();
 
@@ -16,6 +24,7 @@ const Navbar = () => {
   const [yScrollPoint, setYScrollPoint] = useState<number>(0);
   const [isDrawerMenuOpened, setIsDrawerMenuOpened] = useState<boolean>(false);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [userData, setUserData] = useState<UserData | null>(null);
 
   useEffect(() => {
     const savedDarkMode = JSON.parse(
@@ -43,6 +52,18 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [yScrollPoint]);
+
+  useEffect(() => {
+    const userAuth = async () => {
+      const res = await axios.get("/api/auth/me");
+      if (res.status === 200) {
+        setIsLoggedIn(true);
+        const { data: user } = res.data;
+        setUserData(user);
+      }
+    };
+    userAuth();
+  }, []);
 
   const toggleDarkMode = () => {
     document.documentElement.classList.toggle("dark");
