@@ -20,25 +20,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     connectToDB();
     const { username, email, phone, password } = req.body as SignUpRequestBody;
 
-    const emailRegex: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return res.status(422).json({ message: "Invalid email format" });
-    }
-
-    const phoneRegex: RegExp = /^09\d{9}$/;
-    if (!phoneRegex.test(phone)) {
-      return res.status(422).json({ message: "Invalid phone number format" });
-    }
-
-    if (password.trim().length < 8) {
-      return res
-        .status(422)
-        .json({ message: "Password must be at least 8 characters long" });
-    }
-
-    const usernameRegex: RegExp = /^[a-zA-Z0-9_]+$/;
-    if (!usernameRegex.test(username)) {
-      return res.status(422).json({ message: "Invalid username format" });
+    if (
+      !username.trim() ||
+      !email.trim() ||
+      !phone.trim() ||
+      !password.trim()
+    ) {
+      return res.status(422).json({ message: "Data is Not Valid!" });
     }
 
     const doesUserExists = await UserModel.findOne({

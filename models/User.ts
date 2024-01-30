@@ -1,5 +1,4 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { hashPassword } from "@/utils/auth";
 
 export interface IUser extends Document {
   username: string;
@@ -13,23 +12,22 @@ export interface IUser extends Document {
 const userSchema: Schema<IUser> = new Schema(
   {
     username: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
+      trim: true,
+    },
     phone: { type: String, required: true },
     password: { type: String, required: true },
-    token: { type: String },
-    role: { type: String },
+    role: { type: String, default: "user" },
+    token: String,
   },
   { timestamps: true }
 );
 
-userSchema.pre<IUser>("save", async function (next) {
-  // Hash the password before saving
-  if (this.isModified("password")) {
-    this.password = await hashPassword(this.password);
-  }
-
-  next();
-});
+userSchema.index({ email: 1 });
 
 const UserModel =
   (mongoose.models.User as mongoose.Model<IUser>) ||

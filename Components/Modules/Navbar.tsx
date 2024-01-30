@@ -26,6 +26,8 @@ const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [userData, setUserData] = useState<UserData | null>(null);
 
+  // dark mode logic:
+
   useEffect(() => {
     const savedDarkMode = JSON.parse(
       localStorage.getItem("darkMode") || "false"
@@ -41,6 +43,50 @@ const Navbar = () => {
     };
   }, []);
 
+  const toggleDarkMode = () => {
+    document.documentElement.classList.toggle("dark");
+    const newIsDarkMode = document.documentElement.classList.contains("dark");
+    setIsDarkMode(newIsDarkMode);
+    localStorage.setItem("darkMode", JSON.stringify(newIsDarkMode));
+  };
+
+  // getMe and logout logic:
+
+  useEffect(() => {
+    const checkUserAuth = async () => {
+      try {
+        const res = await axios.get("/api/auth/me");
+        if (res.status === 200) {
+          setIsLoggedIn(true);
+          setUserData(res.data);
+        }
+      } catch (error) {
+        setIsLoggedIn(false);
+        setUserData(null);
+        router.replace("/signin");
+      }
+    };
+
+    if (!isLoggedIn) {
+      checkUserAuth();
+    }
+  }, [isLoggedIn]);
+
+  const logout = async () => {
+    try {
+      const res = await axios.get("/api/auth/signout");
+      if (res.status === 200) {
+        setIsLoggedIn(false);
+        setUserData(null);
+        router.replace("/signin");
+      }
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+  };
+
+  // drawer menu scroll logic:
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -52,33 +98,6 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [yScrollPoint]);
-
-  useEffect(() => {
-    const userAuth = async () => {
-      const res = await axios.get("/api/auth/me");
-      if (res.status === 200) {
-        setIsLoggedIn(true);
-        const { data: user } = res.data;
-        setUserData(user);
-      }
-    };
-    userAuth();
-  }, []);
-
-  const toggleDarkMode = () => {
-    document.documentElement.classList.toggle("dark");
-    const newIsDarkMode = document.documentElement.classList.contains("dark");
-    setIsDarkMode(newIsDarkMode);
-    localStorage.setItem("darkMode", JSON.stringify(newIsDarkMode));
-  };
-
-  const logout = async () => {
-    const res = await axios.get("/api/auth/signout");
-    if (res.status === 200) {
-      setIsLoggedIn(false);
-      router.replace("/signin");
-    }
-  };
 
   return (
     <div className="sticky top-0  bg-white w-full p-8 shadow-xl !z-50 dark:bg-zinc-900">

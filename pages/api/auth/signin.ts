@@ -6,16 +6,11 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== "POST") {
-    return false;
+    return res.status(405).end(); // Method Not Allowed
   }
-
   try {
     connectToDB();
     const { identifier, password } = req.body;
-
-    if (!identifier.trim() || !password.trim()) {
-      return res.status(422).json({ message: "Data in Not Valid!" });
-    }
 
     const user = await UserModel.findOne({
       $or: [{ username: identifier }, { email: identifier }],
@@ -25,7 +20,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(404).json({ message: "User Not Found!" });
     }
 
-    const isPasswordValid = await verifyPassword(password, user.password);
+    const isPasswordValid = await verifyPassword(
+      String(password),
+      user.password
+    );
 
     if (!isPasswordValid) {
       return res
@@ -45,7 +43,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         })
       )
       .status(200)
-      .json({ message: "User Logged In Successfully!" });
+      .json({ message: "User Logged In Successfully!", token });
   } catch (err) {
     return res.status(500).json({ message: "Unknown Internal Server Error." });
   }

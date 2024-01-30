@@ -1,4 +1,4 @@
-import bcrypt from "bcryptjs";
+import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 interface TokenData {
@@ -6,32 +6,35 @@ interface TokenData {
 }
 
 const hashPassword = async (password: string): Promise<string> => {
-  const hashedPassword = await bcrypt.hash(password, 12);
+  const hashedPassword = await bcryptjs.hash(password, 12);
   return hashedPassword;
 };
 
 const generateToken = (data: TokenData): string => {
-  const token = jwt.sign({ ...data }, process.env.privateKey || "", {
-    expiresIn: "24h",
-  });
+  const privateKey = process.env.privateKey || "";
+  if (!privateKey) {
+    throw new Error("Private key not provided");
+  }
 
+  const token = jwt.sign({ ...data }, privateKey, { expiresIn: "24h" });
   return token;
 };
-
-const verifyPassword = async (
-  password: string,
-  hashedPassword: string
-): Promise<boolean> => {
-  const isValid = await bcrypt.compare(password, hashedPassword);
+const verifyPassword = async (password: string, hashedPassword: string) => {
+  const isValid: boolean = await bcryptjs.compare(password, hashedPassword);
   return isValid;
 };
 
 const verifyToken = (token: string): TokenData | false => {
   try {
-    const validationResult = jwt.verify(token, process.env.privateKey || "");
+    const privateKey = process.env.privateKey || "";
+    if (!privateKey) {
+      throw new Error("Private key not provided");
+    }
+
+    const validationResult = jwt.verify(token, privateKey);
     return validationResult as TokenData;
   } catch (err) {
-    console.log("Verify Token Error:", err);
+    console.error("Verify Token Error:", err);
     return false;
   }
 };

@@ -5,6 +5,7 @@ import { BsCalendarDate } from "react-icons/bs";
 import { IoCarOutline } from "react-icons/io5";
 import { BsPeople } from "react-icons/bs";
 import { FaLeaf } from "react-icons/fa";
+import Home from "..";
 
 const Contact = () => {
   return (
@@ -55,4 +56,5 @@ const Contact = () => {
     </div>
   );
 };
+
 export default Contact;
