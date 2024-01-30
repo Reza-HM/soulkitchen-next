@@ -5,17 +5,8 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsFillSunFill } from "react-icons/bs";
-import { FaPlus } from "react-icons/fa";
 import { PiMoonStarsBold } from "react-icons/pi";
 import { RxHamburgerMenu } from "react-icons/rx";
-
-interface UserData {
-  id: string;
-  username: string;
-  email: string;
-  phone: string;
-  role: string;
-}
 
 const Navbar = () => {
   const router = useRouter();
@@ -24,7 +15,7 @@ const Navbar = () => {
   const [yScrollPoint, setYScrollPoint] = useState<number>(0);
   const [isDrawerMenuOpened, setIsDrawerMenuOpened] = useState<boolean>(false);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-  const [userData, setUserData] = useState<UserData | null>(null);
+  const [username, setUsername] = useState("");
 
   // dark mode logic:
 
@@ -58,26 +49,25 @@ const Navbar = () => {
         const res = await axios.get("/api/auth/me");
         if (res.status === 200) {
           setIsLoggedIn(true);
-          setUserData(res.data);
+          setUsername(res.data.data.username);
         }
       } catch (error) {
         setIsLoggedIn(false);
-        setUserData(null);
-        router.replace("/signin");
+        setUsername("");
       }
     };
 
     if (!isLoggedIn) {
       checkUserAuth();
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, router]);
 
   const logout = async () => {
     try {
       const res = await axios.get("/api/auth/signout");
       if (res.status === 200) {
         setIsLoggedIn(false);
-        setUserData(null);
+        setUsername("");
         router.replace("/signin");
       }
     } catch (error) {
@@ -148,12 +138,17 @@ const Navbar = () => {
         </div>
         <div className="hidden lg:flex items-center gap-8 flex-wrap">
           {isLoggedIn ? (
-            <Link
-              href="/booking"
-              className="hidden lg:flex justify-center items-center tracking-widest !font-bold py-2 px-8 cursor-pointer border-2 !border-black dark:!border-gray-400 hover:bg-gray-400 hover:text-white hover:!border-gray-400 duration-300"
-            >
-              BOOK YOUR TABLE
-            </Link>
+            <>
+              <Link
+                href="/booking"
+                className="hidden lg:flex justify-center items-center tracking-widest !font-bold py-2 px-8 cursor-pointer border-2 !border-black dark:!border-gray-400 hover:bg-gray-400 hover:text-white hover:!border-gray-400 duration-300"
+              >
+                BOOK YOUR TABLE
+              </Link>
+              <div className="hidden lg:flex justify-center items-center tracking-widest !font-bold py-2 px-8 cursor-pointer border-2 !border-black dark:!border-gray-400 hover:bg-gray-400 hover:text-white hover:!border-gray-400 duration-300">
+                {username}
+              </div>
+            </>
           ) : (
             <Link
               href="/signup"
