@@ -1,5 +1,7 @@
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsFillSunFill } from "react-icons/bs";
@@ -8,8 +10,12 @@ import { PiMoonStarsBold } from "react-icons/pi";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 const Navbar = () => {
+  const router = useRouter();
+
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
   const [yScrollPoint, setYScrollPoint] = useState<number>(0);
+  const [isDrawerMenuOpened, setIsDrawerMenuOpened] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   useEffect(() => {
     const savedDarkMode = JSON.parse(
@@ -45,7 +51,14 @@ const Navbar = () => {
     localStorage.setItem("darkMode", JSON.stringify(newIsDarkMode));
   };
 
-  const [isDrawerMenuOpened, setIsDrawerMenuOpened] = useState(false);
+  const logout = async () => {
+    const res = await axios.get("/api/auth/signout");
+    if (res.status === 200) {
+      setIsLoggedIn(false);
+      router.replace("/signin");
+    }
+  };
+
   return (
     <div className="sticky top-0  bg-white w-full p-8 shadow-xl !z-50 dark:bg-zinc-900">
       <div className="flex justify-center md:justify-between flex-wrap gap-12 lg:gap-0 items-center">
@@ -137,18 +150,23 @@ const Navbar = () => {
           >
             <Link href="/">HOME</Link>
           </li>
-          <li
-            className="pt-8 font-bold  hover:pl-4 duration-300"
-            onClick={() => setIsDrawerMenuOpened(false)}
-          >
-            <Link href="/signup">SIGN IN / SIGN UP</Link>
-          </li>
-          <li
-            className="pt-8 font-bold  hover:pl-4 duration-300"
-            onClick={() => setIsDrawerMenuOpened(false)}
-          >
-            <Link href="/booking">BOOK A TABLE</Link>
-          </li>
+          {!isLoggedIn && (
+            <li
+              className="pt-8 font-bold  hover:pl-4 duration-300"
+              onClick={() => setIsDrawerMenuOpened(false)}
+            >
+              <Link href="/signup">SIGN IN / SIGN UP</Link>
+            </li>
+          )}
+
+          {isLoggedIn && (
+            <li
+              className="pt-8 font-bold  hover:pl-4 duration-300"
+              onClick={() => setIsDrawerMenuOpened(false)}
+            >
+              <Link href="/booking">BOOK A TABLE</Link>
+            </li>
+          )}
           <li
             className="pt-8 font-bold  hover:pl-4 duration-300"
             onClick={() => setIsDrawerMenuOpened(false)}
@@ -191,15 +209,21 @@ const Navbar = () => {
           >
             <Link href="/shop">SHOP</Link>
           </li>
-          <li
-            className="pt-8 font-bold  hover:pl-4 duration-300"
-            onClick={() => setIsDrawerMenuOpened(false)}
-          >
-            <Link href="/contact">CONTACT</Link>
-          </li>
+          {isLoggedIn && (
+            <li
+              className="pt-8 font-bold  hover:pl-4 duration-300"
+              onClick={() => setIsDrawerMenuOpened(false)}
+            >
+              <Link href="/contact">CONTACT</Link>
+            </li>
+          )}
+
           <li
             className="pt-8 font-bold cursor-pointer text-red-500 hover:pl-4 duration-300"
-            onClick={() => setIsDrawerMenuOpened(false)}
+            onClick={() => {
+              setIsDrawerMenuOpened(false);
+              logout();
+            }}
           >
             LOG OUT
           </li>

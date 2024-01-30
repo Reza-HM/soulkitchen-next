@@ -1,7 +1,7 @@
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, MouseEvent, useState } from "react";
 import swal from "sweetalert";
 
 interface FormData {
@@ -24,16 +24,16 @@ const Signup = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const signupUser = async (e: FormEvent<HTMLFormElement>) => {
+  const signupUser = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     try {
       const res = await axios.post("/api/auth/signup", formData);
       if (res.status === 201) {
         swal({
-          title: "شما با موفقیت در سایت عضو شدید.",
+          title: "You Signed Up Successfully!",
           icon: "success",
-          buttons: ["متوجه شدم", "انتقال به صفحه اصلی"],
+          buttons: ["OK", "Go To The Home Page"],
         }).then(() => {
           setFormData({
             username: "",
@@ -43,13 +43,11 @@ const Signup = () => {
           });
           router.replace("/");
         });
-
-        // Handle success: Redirect, display success message, etc.
       } else if (res.status === 422) {
         swal({
-          title: "این ایمیل در سایت وجود دارد.",
+          title: "This email already exists in the website.",
           icon: "error",
-          buttons: ["متوجه شدم", "ثبت نام مجدد"],
+          buttons: ["So Bad", "Try Again"],
         });
       }
     } catch (err) {
