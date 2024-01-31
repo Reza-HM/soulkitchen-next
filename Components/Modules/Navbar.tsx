@@ -90,7 +90,7 @@ const Navbar = () => {
   }, [yScrollPoint]);
 
   return (
-    <div className="sticky top-0 bg-white w-full p-8 shadow-xl !z-50 dark:bg-zinc-900">
+    <div className="sticky top-0 bg-white w-full py-4 px-8 shadow-xl !z-50 dark:bg-zinc-900">
       <div className="flex justify-center md:justify-between flex-wrap gap-12 lg:gap-0 items-center">
         <div className="flex items-center gap-4">
           <div
