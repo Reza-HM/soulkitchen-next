@@ -90,7 +90,7 @@ const Navbar = () => {
   }, [yScrollPoint]);
 
   return (
-    <div className="sticky top-0  bg-white w-full p-8 shadow-xl !z-50 dark:bg-zinc-900">
+    <div className="sticky top-0 bg-white w-full p-8 shadow-xl !z-50 dark:bg-zinc-900">
       <div className="flex justify-center md:justify-between flex-wrap gap-12 lg:gap-0 items-center">
         <div className="flex items-center gap-4">
           <div
@@ -118,7 +118,6 @@ const Navbar = () => {
             )}
           </div>
         </div>
-
         <div className="">
           <Link href="/">
             <Image
@@ -136,18 +135,18 @@ const Navbar = () => {
             </h1>
           </Link>
         </div>
-        <div className="hidden lg:flex items-center gap-8 flex-wrap">
+        <div className="hidden lg:flex flex-col items-center gap-2 flex-wrap">
           {isLoggedIn ? (
             <>
+              <div className="w-full hidden lg:flex justify-center items-center tracking-widest !font-bold py-1 px-8 cursor-pointer border-2 !border-black dark:!border-gray-400 hover:bg-gray-400 hover:text-white hover:!border-gray-400 duration-300">
+                {username}
+              </div>
               <Link
                 href="/booking"
-                className="hidden lg:flex justify-center items-center tracking-widest !font-bold py-2 px-8 cursor-pointer border-2 !border-black dark:!border-gray-400 hover:bg-gray-400 hover:text-white hover:!border-gray-400 duration-300"
+                className="hidden lg:flex justify-center items-center tracking-widest !font-bold py-1 px-8 cursor-pointer border-2 !border-black dark:!border-gray-400 hover:bg-gray-400 hover:text-white hover:!border-gray-400 duration-300"
               >
                 BOOK YOUR TABLE
               </Link>
-              <div className="hidden lg:flex justify-center items-center tracking-widest !font-bold py-2 px-8 cursor-pointer border-2 !border-black dark:!border-gray-400 hover:bg-gray-400 hover:text-white hover:!border-gray-400 duration-300">
-                {username}
-              </div>
             </>
           ) : (
             <Link
