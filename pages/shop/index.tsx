@@ -11,10 +11,11 @@ const Shop = () => {
       <Header />
       <Services />
       <NewProducts />
-      <Recommendation />  
+      <Recommendation />
       <BestSellers />
       <SignUp />
     </div>
   );
 };
+
 export default Shop;

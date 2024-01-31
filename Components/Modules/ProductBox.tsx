@@ -5,12 +5,19 @@ import { FC } from "react";
 
 interface ProductBoxProps {
   name: string;
+  description: string;
   price: string;
   img: string;
   shortName: string;
 }
 
-const ProductBox: FC<ProductBoxProps> = ({ name, shortName, price, img }) => {
+const ProductBox: FC<ProductBoxProps> = ({
+  name,
+  shortName,
+  price,
+  img,
+  description,
+}) => {
   const router = useRouter();
 
   return (
@@ -19,7 +26,7 @@ const ProductBox: FC<ProductBoxProps> = ({ name, shortName, price, img }) => {
         ? "col-span-12 sm:col-span-6 md:col-span-3"
         : "")} flex flex-col items-center justify-center gap-8 p-8`}
     >
-      <Link href={`/product/${shortName}`}>
+      <Link href={`/products/${shortName}`}>
         <Image
           alt="product's img"
           src={img}
@@ -28,7 +35,7 @@ const ProductBox: FC<ProductBoxProps> = ({ name, shortName, price, img }) => {
           className="w-full h-full"
         />
       </Link>
-      <Link href={`/product/${shortName}`}>
+      <Link href={`/products/${shortName}`}>
         <span className="text-2xl tracking-widest truncate">{name}</span>
       </Link>
       <span className="text-2xl tracking-widest">

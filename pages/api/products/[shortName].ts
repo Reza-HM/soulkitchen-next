@@ -19,7 +19,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(404).json({ message: "Product not found" });
     }
 
-    return res.status(200).json(product);
+    res.status(200).json({ data: product });
   } catch (err) {
     console.error("Error fetching product:", err);
     res.status(500).json({ message: "Internal Server Error" });

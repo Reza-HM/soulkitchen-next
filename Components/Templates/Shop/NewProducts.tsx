@@ -1,7 +1,20 @@
 import ProductBox from "@/Components/Modules/ProductBox";
+import { IProduct } from "@/models/Product";
+import axios from "axios";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const NewProducts = () => {
+  const [products, setProducts] = useState<IProduct[]>([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const res = await axios.get("/api/products");
+      setProducts(res.data);
+    };
+    fetchProducts();
+  }, []);
+
   return (
     <div className="mt-32">
       <div className="lg:!h-[700px] lg:!min-h-[700px]">
@@ -15,18 +28,14 @@ const NewProducts = () => {
         </div>
         <div className="mt-40">
           <div className="flex justify-between flex-wrap">
-            <div className="w-full md:flex-1 md:w-1/4 flex flex-col items-center gap-8">
-              <ProductBox />
-            </div>
-            <div className="w-full md:flex-1 md:w-1/4 flex flex-col items-center gap-8">
-              <ProductBox />
-            </div>
-            <div className="w-full md:flex-1 md:w-1/4 flex flex-col items-center gap-8">
-              <ProductBox />
-            </div>
-            <div className="w-full md:flex-1 md:w-1/4 flex flex-col items-center gap-8">
-              <ProductBox />
-            </div>
+            {products.map((product) => (
+              <div
+                className="w-full md:flex-1 md:w-1/4 flex flex-col items-center gap-8"
+                key={product._id}
+              >
+                <ProductBox {...product} />
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -42,4 +51,5 @@ const NewProducts = () => {
     </div>
   );
 };
+
 export default NewProducts;
