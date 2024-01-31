@@ -1,4 +1,7 @@
 import connectToDB from "@/configs/db";
+import ShoppingCartModel from "@/models/ShoppingCartItem";
+import UserModel from "@/models/User";
+import { Schema, isValidObjectId } from "mongoose";
 import { NextApiRequest, NextApiResponse } from "next";
 
 connectToDB();
@@ -24,7 +27,30 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       break;
   }
 
-  const getShoppingCart = async (req: NextApiRequest, res: NextApiResponse) => {
+  async function getShoppingCart(req: NextApiRequest, res: NextApiResponse) {
+    try {
+      const { userId } = req.query;
+
+      if (!userId) {
+        return res.status(400).json({ message: "User ID is required" });
+      }
+
+      const user = await UserModel.findById(userId).populate(
+        "shoppingCart.productId"
+      );
+
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      return res.status(200).json(user.shoppingCart);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: "Internal Server Error" });
+    }
+  }
+
+  async function addToShoppingCart(req: NextApiRequest, res: NextApiResponse) {
     try {
       const { userId, productId, quantity } = req.body;
 
@@ -34,8 +60,37 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           .json({ message: "User ID, Product ID, and Quantity are required" });
       }
 
-      const 
+      const user = await UserModel.findById(userId);
 
-    } catch (err) {}
-  };
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      const existingCartItem = user.shoppingCart.find(
+        (item) => String(item.productId) === productId
+      );
+
+      if (existingCartItem) {
+        existingCartItem.quantity += quantity;
+      } else {
+        if (!isValidObjectId(productId)) {
+          return res.status(400).json({ message: "Invalid Product ID" });
+        }
+
+        const newCartItem = new ShoppingCartModel({
+          productId: productId as unknown as Schema.Types.ObjectId,
+          quantity: Number(quantity),
+        });
+
+        user.shoppingCart.push(newCartItem);
+      }
+
+      await user.save();
+
+      return res.status(200).json(user.shoppingCart);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: "Internal Server Error" });
+    }
+  }
 };
