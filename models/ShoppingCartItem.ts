@@ -1,4 +1,5 @@
 import mongoose, { Document, Schema } from "mongoose";
+import ProductModel from "./Product";
 
 export interface IShoppingCartItem extends Document {
   productId: Schema.Types.ObjectId;
