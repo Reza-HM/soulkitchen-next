@@ -1,4 +1,3 @@
-import { IProduct } from "@/models/Product";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -21,12 +20,20 @@ const ProductBox: FC<ProductBoxProps> = ({ name, shortName, price, img }) => {
         : "")} flex flex-col items-center justify-center gap-8 p-8`}
     >
       <Link href={`/product/${shortName}`}>
-        <Image alt="product's img" src={img} width={300} height={300} />
+        <Image
+          alt="product's img"
+          src={img}
+          width={300}
+          height={300}
+          className="w-full h-full"
+        />
       </Link>
       <Link href={`/product/${shortName}`}>
-        <span className="text-2xl tracking-widest">{name}</span>
+        <span className="text-2xl tracking-widest truncate">{name}</span>
       </Link>
-      <span className="text-2xl tracking-widest">${price}</span>
+      <span className="text-2xl tracking-widest">
+        ${Number(price).toLocaleString()}
+      </span>
       <Link
         href="/cart"
         className="opacity-0 invisible group-hover:opacity-100 group-hover:visible animate-fade-up transition-double"
