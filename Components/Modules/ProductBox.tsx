@@ -22,24 +22,6 @@ const ProductBox: FC<ProductBoxProps> = ({
   description,
 }) => {
   const router = useRouter();
-  const [userId, setUserId] = useState("");
-
-  useEffect(() => {
-    const getMe = async () => {
-      const res = await axios.get("/api/auth/me");
-      setUserId(res.data.data._id);
-    };
-    getMe();
-  }, []);
-
-  const addToCart = async (e: MouseEvent<HTMLSpanElement>) => {
-    e.preventDefault();
-    const res = await axios.post(`/api/shopping-cart`, {
-      userId,
-      productId: _id.toString(),
-      quantity: 1,
-    });
-  };
 
   return (
     <div
@@ -62,10 +44,7 @@ const ProductBox: FC<ProductBoxProps> = ({
       <span className="text-2xl tracking-widest">
         ${Number(price).toLocaleString()}
       </span>
-      <div
-        className="opacity-0 invisible group-hover:opacity-100 group-hover:visible animate-fade-up transition-double"
-        onClick={addToCart}
-      >
+      <div className="opacity-0 invisible group-hover:opacity-100 group-hover:visible animate-fade-up transition-double">
         <Link
           href="/cart"
           className="tracking-widest text-2xl font-bold text-zinc-400"
