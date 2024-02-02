@@ -1,6 +1,7 @@
 import axios from "axios";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { NextApiRequest } from "next";
 import { NextRouter } from "next/router";
 import { Dispatch, SetStateAction } from "react";
 
@@ -42,4 +43,24 @@ const verifyToken = (token: string): TokenData | false => {
   }
 };
 
-export { hashPassword, generateToken, verifyPassword, verifyToken };
+function getUserFromCookie(req: NextApiRequest): string | null {
+  const token: string | undefined = req.cookies?.token;
+
+  if (!token) {
+    return null;
+  }
+
+  try {
+    const decoded: any = jwt.verify(token, process.env.privateKey || "");
+    return decoded.user;
+  } catch {
+    return null;
+  }
+}
+export {
+  hashPassword,
+  generateToken,
+  verifyPassword,
+  verifyToken,
+  getUserFromCookie,
+};

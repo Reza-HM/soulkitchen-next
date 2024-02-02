@@ -1,12 +1,17 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import jwt from "jsonwebtoken";
 
-interface DecodedToken {
+export interface DecodedToken {
   email: string;
 }
 
-export const auth =
-  (handler: (req: NextApiRequest, res: NextApiResponse) => Promise<void>) =>
+export const authenticate =
+  (
+    handler: (
+      req: NextApiRequest & { user?: DecodedToken },
+      res: NextApiResponse
+    ) => Promise<void>
+  ) =>
   async (
     req: NextApiRequest & { user?: DecodedToken },
     res: NextApiResponse
@@ -30,3 +35,5 @@ export const auth =
       return res.status(401).json({ message: "Unauthorized" });
     }
   };
+
+export default auth;

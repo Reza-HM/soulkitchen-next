@@ -1,26 +1,30 @@
 import connectToDB from "@/configs/db";
-import ShoppingCartModel from "@/models/ShoppingCartItem";
+import auth, { DecodedToken } from "@/middleware/auth";
+import ShoppingCartModel from "@/models/Cart";
 import UserModel from "@/models/User";
 import { Schema, isValidObjectId } from "mongoose";
 import { NextApiRequest, NextApiResponse } from "next";
 
 connectToDB();
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (
+  req: NextApiRequest & { user?: DecodedToken },
+  res: NextApiResponse
+) => {
   const { method } = req;
 
   switch (method) {
     case "GET":
-      await getShoppingCart(req, res);
+      await auth(getShoppingCart)(req, res);
       break;
     case "POST":
-      await addToShoppingCart(req, res);
+      await auth(addToShoppingCart)(req, res);
       break;
     case "PUT":
-      await updateShoppingCart(req, res);
+      await auth(updateShoppingCart)(req, res);
       break;
     case "DELETE":
-      await removeFromShoppingCart(req, res);
+      await auth(removeFromShoppingCart)(req, res);
       break;
     default:
       res.status(405).json({ message: "Method Not Allowed." });
@@ -32,7 +36,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     res: NextApiResponse
   ) {
     try {
-      const { userId } = req.body;
+      const { userId } = req.query;
 
       if (!userId) {
         return res.status(400).json({ message: "User ID is required" });

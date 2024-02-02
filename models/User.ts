@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { IShoppingCartItem } from "./ShoppingCartItem";
-import ShoppingCartModel from "./ShoppingCartItem";
+import { IShoppingCartItem } from "./Cart";
+import ShoppingCartModel from "./Cart";
 
 export interface IUser extends Document {
   username: string;

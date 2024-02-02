@@ -1,10 +1,36 @@
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import { FC, useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
+interface CartProps {
+  usersCart: any[]; // Replace 'any' with the actual type of your cart items
+}
 
-const Cart = ({ usersCart }) => {
-  console.log(usersCart);
+const Cart: FC<CartProps> = ({ usersCart }) => {
+  const [cartData, setCartData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const getMeRes = await axios.get("/api/auth/me");
+        const userId = getMeRes.data.data._id;
+        const token = getMeRes.data.data.token;
+
+        const getMyCartRes = await axios.get(`/api/shopping-cart/${userId}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setCartData(getMyCartRes.data);
+
+        console.log(userId);
+        console.log(getMyCartRes.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []); // Empty dependency array ensures the effect runs only once on mount
 
   return (
     <div className="container mt-40 mb-20">
@@ -95,36 +121,5 @@ const Cart = ({ usersCart }) => {
     </div>
   );
 };
-
-export async function getServerSideProps() {
-  try {
-    const getMeRes = await axios.get("/api/auth/me");
-    const userId = getMeRes.data.data._id;
-    const userToken = getMeRes.data.data.token;
-
-    const getMyCartRes = await axios.get("/api/shopping-cart", {
-      params: { userId },
-      headers: {
-        Authorization: `Bearer ${JSON.parse(userToken)}`,
-      },
-    });
-
-    console.log(userId);
-
-    return {
-      props: {
-        usersCart: getMyCartRes.data,
-      },
-    };
-  } catch (error) {
-    console.error("Error fetching data:", error);
-
-    return {
-      props: {
-        usersCart: [],
-      },
-    };
-  }
-}
 
 export default Cart;
