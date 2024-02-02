@@ -1,8 +1,44 @@
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 
 const Cart = () => {
+  const [token, setToken] = useState<string>("");
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("/api/auth/me")
+      .then((res) => res.data)
+      .then((data) => setToken(data.data.token));
+  }, []);
+
+  useEffect(() => {
+    const fetchCartItems = async () => {
+      try {
+        const response = await fetch("/api/cart", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setCartItems(data.cart);
+        } else {
+          console.error("Failed to fetch cart items");
+        }
+      } catch (error) {
+        console.error("Error fetching cart items:", error);
+      }
+    };
+
+    fetchCartItems();
+  }, []);
+
   return (
     <div className="container mt-40 mb-20">
       <h1 className="tracking-widest text-7xl font-bold text-center mb-20">
@@ -31,27 +67,32 @@ const Cart = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-              <th
-                scope="row"
-                className="px-8 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white flex items-center gap-8 mr-20 md:mr-0"
+            {cartItems.map((item) => (
+              <tr
+                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                key={item._id}
               >
-                <Image
-                  src="/img/product1.jpg"
-                  className="w-32 h-32 rounded-[50%]"
-                  alt=""
-                  width={300}
-                  height={300}
-                />
-                Apple MacBook Pro 17"
-              </th>
-              <td className="px-8 py-4 text-center ">$12.00</td>
-              <td className="px-8 py-4 text-center ">1</td>
-              <td className="px-8 py-4 text-center ">$12.00</td>
-              <td className="px-8 py-4">
-                <AiOutlineClose className="text-5xl cursor-pointer text-red-500 bg-zinc-300 w-14 h-14 rounded-[50%] p-2 mx-auto" />
-              </td>
-            </tr>
+                <th
+                  scope="row"
+                  className="px-8 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white flex items-center gap-8 mr-20 md:mr-0"
+                >
+                  <Image
+                    src={item.img}
+                    className="w-32 h-32 rounded-[50%]"
+                    alt=""
+                    width={300}
+                    height={300}
+                  />
+                  {item.name}
+                </th>
+                <td className="px-8 py-4 text-center ">${item.price}</td>
+                <td className="px-8 py-4 text-center ">1</td>
+                <td className="px-8 py-4 text-center ">$12.00</td>
+                <td className="px-8 py-4">
+                  <AiOutlineClose className="text-5xl cursor-pointer text-red-500 bg-zinc-300 w-14 h-14 rounded-[50%] p-2 mx-auto" />
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

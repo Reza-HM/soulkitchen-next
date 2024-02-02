@@ -43,24 +43,4 @@ const verifyToken = (token: string): TokenData | false => {
   }
 };
 
-function getUserFromCookie(req: NextApiRequest): string | null {
-  const token: string | undefined = req.cookies?.token;
-
-  if (!token) {
-    return null;
-  }
-
-  try {
-    const decoded: any = jwt.verify(token, process.env.privateKey || "");
-    return decoded.user;
-  } catch {
-    return null;
-  }
-}
-export {
-  hashPassword,
-  generateToken,
-  verifyPassword,
-  verifyToken,
-  getUserFromCookie,
-};
+export { hashPassword, generateToken, verifyPassword, verifyToken };

@@ -1,6 +1,5 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { IShoppingCartItem } from "./Cart";
-import ShoppingCartModel from "./Cart";
+import ProductModel from "./Product";
 
 export interface IUser extends Document {
   username: string;
@@ -9,7 +8,7 @@ export interface IUser extends Document {
   password: string;
   token?: string;
   role?: string;
-  shoppingCart: IShoppingCartItem[];
+  cart: string[];
 }
 
 const userSchema: Schema<IUser> = new Schema(
@@ -26,7 +25,7 @@ const userSchema: Schema<IUser> = new Schema(
     password: { type: String, required: true },
     role: { type: String, default: "user" },
     token: String,
-    shoppingCart: [{ type: Schema.Types.ObjectId, ref: "ShoppingCartItem" }],
+    cart: [{ type: Schema.Types.ObjectId, ref: "Product" }],
   },
   { timestamps: true }
 );
