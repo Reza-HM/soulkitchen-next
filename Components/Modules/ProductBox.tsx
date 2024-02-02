@@ -1,9 +1,11 @@
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { FC } from "react";
+import { FC, MouseEvent, useEffect, useState } from "react";
 
 interface ProductBoxProps {
+  _id: string;
   name: string;
   description: string;
   price: string;
@@ -12,6 +14,7 @@ interface ProductBoxProps {
 }
 
 const ProductBox: FC<ProductBoxProps> = ({
+  _id,
   name,
   shortName,
   price,
@@ -19,6 +22,24 @@ const ProductBox: FC<ProductBoxProps> = ({
   description,
 }) => {
   const router = useRouter();
+  const [userId, setUserId] = useState("");
+
+  useEffect(() => {
+    const getMe = async () => {
+      const res = await axios.get("/api/auth/me");
+      setUserId(res.data.data._id);
+    };
+    getMe();
+  }, []);
+
+  const addToCart = async (e: MouseEvent<HTMLSpanElement>) => {
+    e.preventDefault();
+    const res = await axios.post(`/api/shopping-cart`, {
+      userId,
+      productId: _id.toString(),
+      quantity: 1,
+    });
+  };
 
   return (
     <div
@@ -41,14 +62,17 @@ const ProductBox: FC<ProductBoxProps> = ({
       <span className="text-2xl tracking-widest">
         ${Number(price).toLocaleString()}
       </span>
-      <Link
-        href="/cart"
+      <div
         className="opacity-0 invisible group-hover:opacity-100 group-hover:visible animate-fade-up transition-double"
+        onClick={addToCart}
       >
-        <span className="tracking-widest text-2xl font-bold text-zinc-400">
+        <Link
+          href="/cart"
+          className="tracking-widest text-2xl font-bold text-zinc-400"
+        >
           ADD TO CART
-        </span>
-      </Link>
+        </Link>
+      </div>
     </div>
   );
 };

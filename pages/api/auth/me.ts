@@ -24,7 +24,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const user = await UserModel.findOne(
       { email: tokenPayload.email },
-      "username email phone role"
+      "_id username email phone role token"
     );
 
     return res.status(200).json({ data: user });

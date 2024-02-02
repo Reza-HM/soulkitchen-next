@@ -27,9 +27,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       break;
   }
 
-  async function getShoppingCart(req: NextApiRequest, res: NextApiResponse) {
+  async function getShoppingCart(
+    req: NextApiRequest & { user?: DecodedToken },
+    res: NextApiResponse
+  ) {
     try {
-      const { userId } = req.query;
+      const { userId } = req.body;
 
       if (!userId) {
         return res.status(400).json({ message: "User ID is required" });
