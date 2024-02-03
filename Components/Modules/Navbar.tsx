@@ -1,3 +1,4 @@
+import { useAuth } from "@/contexts/AuthContext";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,12 +11,11 @@ import { RxHamburgerMenu } from "react-icons/rx";
 
 const Navbar = () => {
   const router = useRouter();
+  const authContext = useAuth();
 
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
   const [yScrollPoint, setYScrollPoint] = useState<number>(0);
   const [isDrawerMenuOpened, setIsDrawerMenuOpened] = useState<boolean>(false);
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-  const [username, setUsername] = useState("");
 
   // dark mode logic:
 
@@ -41,33 +41,13 @@ const Navbar = () => {
     localStorage.setItem("darkMode", JSON.stringify(newIsDarkMode));
   };
 
-  // getMe and logout logic:
-
-  useEffect(() => {
-    const checkUserAuth = async () => {
-      try {
-        const res = await axios.get("/api/auth/me");
-        if (res.status === 200) {
-          setIsLoggedIn(true);
-          setUsername(res.data.data.username);
-        }
-      } catch (error) {
-        setIsLoggedIn(false);
-        setUsername("");
-      }
-    };
-
-    if (!isLoggedIn) {
-      checkUserAuth();
-    }
-  }, [isLoggedIn, router]);
+  // handling logout:
 
   const logout = async () => {
     try {
       const res = await axios.get("/api/auth/signout");
       if (res.status === 200) {
-        setIsLoggedIn(false);
-        setUsername("");
+        router.reload();
         router.replace("/signin");
       }
     } catch (error) {
@@ -136,10 +116,10 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="hidden lg:flex flex-col items-center gap-2 flex-wrap">
-          {isLoggedIn ? (
+          {authContext?.user?.token ? (
             <>
               <div className="w-full hidden lg:flex justify-center items-center tracking-widest !font-bold py-1 px-8 cursor-pointer border-2 !border-black dark:!border-gray-400 hover:bg-gray-400 hover:text-white hover:!border-gray-400 duration-300">
-                {username}
+                {authContext?.user?.username}
               </div>
               <Link
                 href="/booking"
@@ -184,7 +164,7 @@ const Navbar = () => {
           >
             <Link href="/">HOME</Link>
           </li>
-          {!isLoggedIn && (
+          {!authContext?.user?.token && (
             <li
               className="pt-8 font-bold  hover:pl-4 duration-300"
               onClick={() => setIsDrawerMenuOpened(false)}
@@ -193,7 +173,7 @@ const Navbar = () => {
             </li>
           )}
 
-          {isLoggedIn && (
+          {authContext?.user?.token && (
             <li
               className="pt-8 font-bold  hover:pl-4 duration-300"
               onClick={() => setIsDrawerMenuOpened(false)}
@@ -243,7 +223,7 @@ const Navbar = () => {
           >
             <Link href="/shop">SHOP</Link>
           </li>
-          {isLoggedIn && (
+          {authContext?.user?.token && (
             <li
               className="pt-8 font-bold  hover:pl-4 duration-300"
               onClick={() => setIsDrawerMenuOpened(false)}
@@ -252,7 +232,7 @@ const Navbar = () => {
             </li>
           )}
 
-          {isLoggedIn && (
+          {authContext?.user?.token && (
             <li
               className="pt-8 font-bold cursor-pointer text-red-500 hover:pl-4 duration-300"
               onClick={() => {

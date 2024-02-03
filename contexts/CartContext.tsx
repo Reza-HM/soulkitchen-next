@@ -5,7 +5,7 @@ import {
   useEffect,
   ReactNode,
 } from "react";
-import { useUser } from "./AuthContext";
+import { useAuth } from "./AuthContext";
 import { useProduct, IProduct } from "./ProductContext";
 
 export interface ICartItem {
@@ -26,12 +26,11 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [cart, setCart] = useState<ICartItem[]>([]);
-  const { user } = useUser();
+  const { user } = useAuth();
   const { fetchProductByShortName } = useProduct();
 
   const addToCart = async (productId: string, quantity: number) => {
     if (!user) {
-      // Handle case where user is not authenticated
       return;
     }
 
@@ -40,7 +39,6 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     );
 
     if (existingCartItem) {
-      // If the product is already in the cart, update the quantity
       setCart((prevCart) =>
         prevCart.map((item) =>
           item.product._id === productId
@@ -49,7 +47,6 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
         )
       );
     } else {
-      // If the product is not in the cart, fetch it and add to the cart
       const product = await fetchProductByShortName(productId);
 
       if (product) {
@@ -65,11 +62,12 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   const fetchCart = async () => {
-    // Fetch user's cart data from the backend
-    // You can use the user._id to identify the user and retrieve their cart data
-    // For demonstration purposes, I'll assume a dummy API endpoint
     try {
-      const response = await fetch(`/api/users/${user?._id}/cart`); // Adjust the API endpoint accordingly
+      const response = await fetch(`/api/users/${user?._id}/cart`, {
+        headers: {
+          Authorization: `Bearer ${user?.token}`,
+        },
+      });
       const data = await response.json();
       setCart(data.cartItems || []);
     } catch (error) {
@@ -78,7 +76,6 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   useEffect(() => {
-    // Fetch user's cart data when the component mounts
     if (user) {
       fetchCart();
     }

@@ -1,3 +1,4 @@
+import { useCart } from "@/contexts/CartContext";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
@@ -5,43 +6,11 @@ import { useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 
 const Cart = () => {
-  const [token, setToken] = useState<string>("");
-  const [cartItems, setCartItems] = useState([]);
+  const { fetchCart, cart } = useCart();
 
   useEffect(() => {
-    // Fetch the token
-    axios
-      .get("/api/auth/me")
-      .then((res) => res.data)
-      .then((data) => {
-        setToken(data.data.token);
-
-        // Now that the token is available, fetch cart items
-        fetchCartItems(data.data.token);
-      })
-      .catch((error) => {
-        console.error("Error fetching token:", error);
-      });
+    fetchCart();
   }, []);
-
-  const fetchCartItems = async (token: string) => {
-    try {
-      const response = await fetch("/api/cart", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setCartItems(data.cart);
-      } else {
-        console.error("Failed to fetch cart items");
-      }
-    } catch (error) {
-      console.error("Error fetching cart items:", error);
-    }
-  };
 
   return (
     <div className="container mt-40 mb-20">
@@ -71,7 +40,7 @@ const Cart = () => {
             </tr>
           </thead>
           <tbody>
-            {cartItems.map((item) => (
+            {cart.map((item) => (
               <tr
                 className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                 key={item._id}

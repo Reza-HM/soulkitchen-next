@@ -17,14 +17,14 @@ export interface IUser {
   cart: string[];
 }
 
-interface UserContextType {
+interface AuthContextType {
   user: IUser | null;
   fetchUser: () => Promise<void>;
 }
 
-const UserContext = createContext<UserContextType | undefined>(undefined);
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const UserProvider: React.FC<{ children: ReactNode }> = ({
+export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [user, setUser] = useState<IUser | null>(null);
@@ -35,10 +35,8 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
       const response = await fetch("/api/auth/me");
       if (response.ok) {
         const data = await response.json();
-        setUser(data.user || null);
-      } else {
-        // Redirect to login page if not authenticated
-        router.push("/login");
+
+        setUser(data.data || null);
       }
     } catch (error) {
       console.error("Error fetching user:", error);
@@ -50,14 +48,14 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
   }, []);
 
   return (
-    <UserContext.Provider value={{ user, fetchUser }}>
+    <AuthContext.Provider value={{ user, fetchUser }}>
       {children}
-    </UserContext.Provider>
+    </AuthContext.Provider>
   );
 };
 
-export const useUser = () => {
-  const context = useContext(UserContext);
+export const useAuth = () => {
+  const context = useContext(AuthContext);
   if (!context) {
     throw new Error("useUser must be used within a UserProvider");
   }

@@ -1,3 +1,5 @@
+import { useAuth } from "@/contexts/AuthContext";
+import { useCart } from "@/contexts/CartContext";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,40 +24,12 @@ const ProductBox: FC<ProductBoxProps> = ({
   description,
 }) => {
   const router = useRouter();
-  const [token, setToken] = useState<string>("");
-  const [addingToCart, setAddingToCart] = useState<boolean>(false);
+  const { addToCart } = useCart();
 
-  useEffect(() => {
-    axios
-      .get("/api/auth/me")
-      .then((res) => res.data)
-      .then((data) => setToken(data.data.token));
-  }, []);
-
-  const handleAddToCart = async () => {
-    try {
-      const response = await fetch("/api/user", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ productId: _id }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        router.replace("/cart");
-      } else {
-        console.error("Failed to add product to cart");
-      }
-    } catch (error) {
-      console.error("Error adding product to cart:", error);
-    } finally {
-      setAddingToCart(false);
-    }
+  const handleAddToCart = () => {
+    addToCart(_id, 1);
   };
+
   return (
     <div
       className={`animate-fade-up group ${(router.pathname = "allProducts"
@@ -85,7 +59,7 @@ const ProductBox: FC<ProductBoxProps> = ({
           href="/cart"
           className="tracking-widest text-2xl font-bold text-zinc-400"
         >
-          {addingToCart ? "ADDING TO CART..." : "ADD TO CART"}
+          ADD TO CART
         </Link>
       </div>
     </div>
