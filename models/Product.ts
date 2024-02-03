@@ -1,10 +1,10 @@
-import mongoose, { Schema, Document, models, Model, model } from "mongoose";
+import mongoose, { Schema, Document } from "mongoose";
 
 export interface IProduct extends Document {
   name: string;
   description: string;
   img: string;
-  price: string;
+  price: number;
   shortName: string;
 }
 
@@ -13,14 +13,14 @@ const productSchema: Schema<IProduct> = new Schema(
     name: { type: String, required: true },
     description: { type: String, required: true },
     img: { type: String, required: true },
-    price: { type: String, required: true },
+    price: { type: Number, required: true }, // Adjust type to number
     shortName: { type: String, required: true },
   },
   { timestamps: true }
 );
 
-const ProductModel =
-  (models.Product as Model<IProduct>) ||
-  model<IProduct>("Product", productSchema);
+const model =
+  (mongoose.models.Product as mongoose.Model<IProduct>) ||
+  mongoose.model<IProduct>("Product", productSchema);
 
-export default ProductModel;
+export default model;

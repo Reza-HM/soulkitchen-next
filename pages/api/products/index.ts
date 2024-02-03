@@ -1,5 +1,5 @@
 import connectToDB from "@/configs/db";
-import ProductModel from "@/models/Product";
+import productModel from "@/models/product";
 import { NextApiRequest, NextApiResponse } from "next";
 
 connectToDB();
@@ -7,7 +7,7 @@ connectToDB();
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "GET") {
     try {
-      const products = await ProductModel.find();
+      const products = await productModel.find();
       return res.status(200).json(products);
     } catch (err) {
       console.error("Error fetching products:", err);
@@ -21,7 +21,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         return res.status(400).json({ message: "All fields are required" });
       }
 
-      const newProduct = new ProductModel({
+      const newProduct = new productModel({
         name,
         description,
         price,

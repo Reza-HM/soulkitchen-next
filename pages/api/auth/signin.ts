@@ -1,5 +1,5 @@
 import connectToDB from "@/configs/db";
-import UserModel from "@/models/User";
+import userModel from "@/models/user";
 import { generateToken, verifyPassword } from "@/utils/auth";
 import { serialize } from "cookie";
 import { NextApiRequest, NextApiResponse } from "next";
@@ -12,7 +12,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     connectToDB();
     const { identifier, password } = req.body;
 
-    const user = await UserModel.findOne({
+    const user = await userModel.findOne({
       $or: [{ username: identifier }, { email: identifier }],
     });
 

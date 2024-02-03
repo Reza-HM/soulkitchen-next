@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import UserModel from "@/models/User";
+import userModel from "@/models/user";
 import connectToDB from "@/configs/db";
 import { verify } from "jsonwebtoken";
 
@@ -18,7 +18,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     }
     const decoded = verify(token, process.env.privateKey || "") as JWTPayload;
 
-    const user = await UserModel.findOne({ email: decoded.email });
+    const user = await userModel.findOne({ email: decoded.email });
 
     if (!user) {
       return res.status(401).json({ message: "Unauthorized - User Not Found" });

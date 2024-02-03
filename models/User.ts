@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document } from "mongoose";
-import ProductModel from "./Product";
+const productModel = require("./product");
 
 export interface IUser extends Document {
   username: string;
@@ -8,7 +8,7 @@ export interface IUser extends Document {
   password: string;
   token?: string;
   role?: string;
-  cart: string[];
+  cart: [];
 }
 
 const userSchema: Schema<IUser> = new Schema(
@@ -32,8 +32,8 @@ const userSchema: Schema<IUser> = new Schema(
 
 userSchema.index({ email: 1 });
 
-const UserModel =
+const model =
   (mongoose.models.User as mongoose.Model<IUser>) ||
   mongoose.model<IUser>("User", userSchema);
 
-export default UserModel;
+export default model;

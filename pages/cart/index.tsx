@@ -9,35 +9,39 @@ const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
+    // Fetch the token
     axios
       .get("/api/auth/me")
       .then((res) => res.data)
-      .then((data) => setToken(data.data.token));
+      .then((data) => {
+        setToken(data.data.token);
+
+        // Now that the token is available, fetch cart items
+        fetchCartItems(data.data.token);
+      })
+      .catch((error) => {
+        console.error("Error fetching token:", error);
+      });
   }, []);
 
-  useEffect(() => {
-    const fetchCartItems = async () => {
-      try {
-        const response = await fetch("/api/cart", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+  const fetchCartItems = async (token: string) => {
+    try {
+      const response = await fetch("/api/cart", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
+      if (response.ok) {
         const data = await response.json();
-
-        if (response.ok) {
-          setCartItems(data.cart);
-        } else {
-          console.error("Failed to fetch cart items");
-        }
-      } catch (error) {
-        console.error("Error fetching cart items:", error);
+        setCartItems(data.cart);
+      } else {
+        console.error("Failed to fetch cart items");
       }
-    };
-
-    fetchCartItems();
-  }, []);
+    } catch (error) {
+      console.error("Error fetching cart items:", error);
+    }
+  };
 
   return (
     <div className="container mt-40 mb-20">

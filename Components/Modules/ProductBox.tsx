@@ -46,7 +46,7 @@ const ProductBox: FC<ProductBoxProps> = ({
       const data = await response.json();
 
       if (response.ok) {
-        router.push("/cart");
+        router.replace("/cart");
       } else {
         console.error("Failed to add product to cart");
       }

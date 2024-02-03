@@ -1,5 +1,5 @@
 import ProductBox from "@/Components/Modules/ProductBox";
-import { IProduct } from "@/models/Product";
+import { IProduct } from "@/models/product";
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";

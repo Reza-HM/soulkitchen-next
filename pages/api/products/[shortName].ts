@@ -1,5 +1,5 @@
 import connectToDB from "@/configs/db";
-import ProductModel from "@/models/Product";
+import productModel from "@/models/product";
 import { NextApiRequest, NextApiResponse } from "next";
 
 connectToDB();
@@ -11,7 +11,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   try {
-    const product = await ProductModel.findOne({
+    const product = await productModel.findOne({
       shortName: shortName.toString(),
     });
 

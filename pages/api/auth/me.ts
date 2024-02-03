@@ -1,5 +1,5 @@
 import connectToDB from "@/configs/db";
-import UserModel from "@/models/User";
+import userModel from "@/models/user";
 import { verifyToken } from "@/utils/auth";
 import { NextApiRequest, NextApiResponse } from "next";
 
@@ -22,7 +22,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(401).json({ message: "You're Not Logged In!" });
     }
 
-    const user = await UserModel.findOne(
+    const user = await userModel.findOne(
       { email: tokenPayload.email },
       "_id username email phone role token"
     );

@@ -1,5 +1,5 @@
 import connectToDB from "@/configs/db";
-import UserModel, { IUser } from "@/models/User";
+import userModel, { IUser } from "@/models/user";
 import { generateToken, hashPassword } from "@/utils/auth";
 import { serialize } from "cookie";
 import { NextApiRequest, NextApiResponse } from "next";
@@ -29,7 +29,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(422).json({ message: "Data is Not Valid!" });
     }
 
-    const doesUserExists = await UserModel.findOne({
+    const doesUserExists = await userModel.findOne({
       $or: [{ username }, { email }],
     });
 
@@ -43,9 +43,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const token = generateToken({ email });
 
-    const users = await UserModel.find({});
+    const users = await userModel.find({});
 
-    await UserModel.create({
+    await userModel.create({
       username,
       email,
       phone,

@@ -1,6 +1,6 @@
 import ProductBox from "@/Components/Modules/ProductBox";
 import connectToDB from "@/configs/db";
-import ProductModel, { IProduct } from "@/models/Product";
+import ProductModel, { IProduct } from "@/models/product";
 import { GetStaticProps, GetStaticPropsContext } from "next";
 import { FC } from "react";
 
