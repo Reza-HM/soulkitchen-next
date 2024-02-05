@@ -40,12 +40,18 @@ const BestSellers = () => {
         </div>
       </div>
 
-      <div className="">
+      <div className="flex items-center mt-20">
         <Link
           href="/allProducts"
           className="mt-32 tracking-widest cursor-pointer text-zinc-500 text-2xl border-2 border-zinc-500 w-60 mx-auto p-4 flex justify-center items-center hover:bg-zinc-400 hover:text-white hover:border-zinc-400 duration-300"
         >
           SHOP ALL
+        </Link>
+        <Link
+          href="/cart"
+          className="mt-32 tracking-widest cursor-pointer text-zinc-500 text-xl border-2 border-zinc-500 w-60 mx-auto p-4 flex justify-center items-center hover:bg-zinc-400 hover:text-white hover:border-zinc-400 duration-300"
+        >
+          CHECK THE CART
         </Link>
       </div>
     </div>

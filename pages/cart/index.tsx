@@ -1,16 +1,12 @@
 import { useCart } from "@/contexts/CartContext";
-import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 
 const Cart = () => {
-  const { fetchCart, cart } = useCart();
+  const { cart, totalPrice } = useCart();
 
-  useEffect(() => {
-    fetchCart();
-  }, []);
+  console.log(cart);
 
   return (
     <div className="container mt-40 mb-20">
@@ -58,9 +54,13 @@ const Cart = () => {
                   />
                   {item.name}
                 </th>
-                <td className="px-8 py-4 text-center ">${item.price}</td>
-                <td className="px-8 py-4 text-center ">1</td>
-                <td className="px-8 py-4 text-center ">$12.00</td>
+                <td className="px-8 py-4 text-center ">
+                  ${Number(item.price).toLocaleString()}
+                </td>
+                <td className="px-8 py-4 text-center ">{item.quantity}</td>
+                <td className="px-8 py-4 text-center ">
+                  ${(Number(item.price) * item.quantity).toLocaleString()}
+                </td>
                 <td className="px-8 py-4">
                   <AiOutlineClose className="text-5xl cursor-pointer text-red-500 bg-zinc-300 w-14 h-14 rounded-[50%] p-2 mx-auto" />
                 </td>
@@ -89,11 +89,11 @@ const Cart = () => {
         <div className="w-full mt-8">
           <div className="flex items-center justify-between border-t border-zinc-600 dark:border-zinc-300 pt-8">
             <span>Subtotal</span>
-            <span className="font-bold">$12.00</span>
+            <span className="font-bold">$ {totalPrice().toLocaleString()}</span>
           </div>
           <div className="flex items-center justify-between mt-8 border-t border-zinc-600 dark:border-zinc-300 pt-8">
             <span>Total</span>
-            <span className="font-bold">$12.00</span>
+            <span className="font-bold">$ {totalPrice().toLocaleString()}</span>
           </div>
         </div>
         <Link

@@ -1,89 +1,81 @@
-import {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  ReactNode,
-} from "react";
-import { useAuth } from "./AuthContext";
-import { useProduct, IProduct } from "./ProductContext";
+// cartContext.tsx
 
-export interface ICartItem {
-  product: IProduct;
-  quantity: number;
-}
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 interface CartContextType {
-  cart: ICartItem[];
-  addToCart: (productId: string, quantity: number) => Promise<void>;
+  cart: ProductDetails[];
+  addToCart: (productDetails: ProductDetails) => void;
   removeFromCart: (productId: string) => void;
-  fetchCart: () => Promise<void>;
+  totalPrice: () => number;
+}
+
+interface ProductDetails {
+  _id: string; // Using shortName as a unique identifier
+  name: string;
+  price: string;
+  img: string;
+  description: string;
+  shortName: string;
+  quantity: number;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-export const CartProvider: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => {
-  const [cart, setCart] = useState<ICartItem[]>([]);
-  const { user } = useAuth();
-  const { fetchProductByShortName } = useProduct();
+export const CartProvider: React.FC = ({ children }) => {
+  const [cart, setCart] = useState<ProductDetails[]>([]);
 
-  const addToCart = async (productId: string, quantity: number) => {
-    if (!user) {
-      return;
-    }
+  const addToCart = (productDetails: ProductDetails) => {
+    const { _id, name, price, img, description, shortName, quantity } =
+      productDetails;
 
-    const existingCartItem = cart.find(
-      (item) => item.product._id === productId
-    );
+    const existingProductIndex = cart.findIndex((item) => item._id === _id);
 
-    if (existingCartItem) {
-      setCart((prevCart) =>
-        prevCart.map((item) =>
-          item.product._id === productId
-            ? { ...item, quantity: item.quantity + quantity }
-            : item
-        )
-      );
+    if (existingProductIndex !== -1) {
+      setCart((prevCart) => {
+        const updatedCart = [...prevCart];
+        updatedCart[existingProductIndex].quantity += quantity;
+        return updatedCart;
+      });
     } else {
-      const product = await fetchProductByShortName(productId);
+      const newProduct: ProductDetails = {
+        _id,
+        name,
+        price,
+        img,
+        description,
+        shortName,
+        quantity,
+      };
 
-      if (product) {
-        setCart((prevCart) => [...prevCart, { product, quantity }]);
-      }
+      setCart((prevCart) => [...prevCart, newProduct]);
     }
   };
 
   const removeFromCart = (productId: string) => {
-    setCart((prevCart) =>
-      prevCart.filter((item) => item.product._id !== productId)
+    setCart((prevCart) => prevCart.filter((item) => item._id !== productId));
+  };
+
+  const totalPrice = (): number => {
+    return cart.reduce(
+      (total, item) => total + Number(item.price) * item.quantity,
+      0
     );
   };
 
-  const fetchCart = async () => {
-    try {
-      const response = await fetch(`/api/users/${user?._id}/cart`, {
-        headers: {
-          Authorization: `Bearer ${user?.token}`,
-        },
-      });
-      const data = await response.json();
-      setCart(data.cartItems || []);
-    } catch (error) {
-      console.error("Error fetching cart:", error);
-    }
-  };
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   useEffect(() => {
-    if (user) {
-      fetchCart();
+    const storedCart = localStorage.getItem("cart");
+    if (storedCart) {
+      setCart(JSON.parse(storedCart));
     }
-  }, [user]);
+  }, []);
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, fetchCart }}
+      value={{ cart, addToCart, removeFromCart, totalPrice }}
     >
       {children}
     </CartContext.Provider>

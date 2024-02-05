@@ -11,14 +11,12 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <AuthProvider>
-        <ProductProvider>
-          <CartProvider>
-            <Topbar />
-            <Navbar />
-            <Component {...pageProps} />
-            <Footer />
-          </CartProvider>
-        </ProductProvider>
+        <CartProvider>
+          <Topbar />
+          <Navbar />
+          <Component {...pageProps} />
+          <Footer />
+        </CartProvider>
       </AuthProvider>
     </>
   );

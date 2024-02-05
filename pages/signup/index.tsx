@@ -41,6 +41,7 @@ const Signup = () => {
             phone: "",
             password: "",
           });
+          router.reload();
           router.replace("/");
         });
       } else if (res.status === 422) {

@@ -26,7 +26,7 @@ const Services = () => {
           </p>
         </div>
         <div className="w-full md:flex-1 md:w-1/4 flex flex-col items-center gap-8">
-          <PiPlantLight animate-fade-right className="text-6xl" />
+          <PiPlantLight className="text-6xl" />
           <h3 className="text-center text-3xl font-PlayfairDisplay font-semibold">
             From farm to fork
           </h3>

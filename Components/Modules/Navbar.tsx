@@ -223,6 +223,12 @@ const Navbar = () => {
           >
             <Link href="/shop">SHOP</Link>
           </li>
+          <li
+            className="pt-8 font-bold  hover:pl-4 duration-300"
+            onClick={() => setIsDrawerMenuOpened(false)}
+          >
+            <Link href="/cart">CART</Link>
+          </li>
           {authContext?.user?.token && (
             <li
               className="pt-8 font-bold  hover:pl-4 duration-300"

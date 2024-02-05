@@ -1,4 +1,3 @@
-import { useAuth } from "@/contexts/AuthContext";
 import { useCart } from "@/contexts/CartContext";
 import axios from "axios";
 import Image from "next/image";
@@ -24,10 +23,12 @@ const ProductBox: FC<ProductBoxProps> = ({
   description,
 }) => {
   const router = useRouter();
+
   const { addToCart } = useCart();
 
+  const quantity = 1;
   const handleAddToCart = () => {
-    addToCart(_id, 1);
+    addToCart({ _id, name, price, img, description, shortName, quantity });
   };
 
   return (
@@ -52,15 +53,12 @@ const ProductBox: FC<ProductBoxProps> = ({
         ${Number(price).toLocaleString()}
       </span>
       <div
-        className="opacity-0 invisible group-hover:opacity-100 group-hover:visible animate-fade-up transition-double"
+        className="opacity-0 invisible group-hover:opacity-100 group-hover:visible animate-fade-up transition-double cursor-pointer"
         onClick={handleAddToCart}
       >
-        <Link
-          href="/cart"
-          className="tracking-widest text-2xl font-bold text-zinc-400"
-        >
+        <span className="tracking-widest text-2xl font-bold text-zinc-400">
           ADD TO CART
-        </Link>
+        </span>
       </div>
     </div>
   );

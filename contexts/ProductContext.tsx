@@ -42,7 +42,9 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({
     try {
       const response = await fetch(`/api/products/${shortName}`);
       const data = await response.json();
-      return data.product || null;
+      console.log("shortname:", shortName);
+
+      return data.data || null;
     } catch (error) {
       console.error(
         `Error fetching product with shortName ${shortName}:`,

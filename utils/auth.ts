@@ -1,3 +1,4 @@
+import { ICartItem } from "@/contexts/CartContext";
 import axios from "axios";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
@@ -43,4 +44,36 @@ const verifyToken = (token: string): TokenData | false => {
   }
 };
 
-export { hashPassword, generateToken, verifyPassword, verifyToken };
+const saveCartToServer = async (userId: string, updatedCart: ICartItem[]) => {
+  try {
+    const response = await fetch(`/api/users/${userId}/cart`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ cartItems: updatedCart }),
+    });
+
+    if (!response.ok) {
+      console.error(
+        "Failed to save cart to server. Server returned:",
+        response.status,
+        response.statusText
+      );
+      const responseBody = await response.json();
+      console.error("Response body:", responseBody);
+    } else {
+      console.log("Cart successfully saved to server");
+    }
+  } catch (error) {
+    console.error("Error saving cart to server:", error);
+  }
+};
+
+export {
+  hashPassword,
+  generateToken,
+  verifyPassword,
+  verifyToken,
+  saveCartToServer,
+};
