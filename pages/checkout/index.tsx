@@ -1,7 +1,10 @@
+import { useCart } from "@/contexts/CartContext";
 import { useState } from "react";
 
 const Checkout = () => {
   const [expandCouponCode, setExpandCouponCode] = useState(false);
+  const { cart, totalPrice } = useCart();
+
   return (
     <div className="container p-20">
       <h1 className="tracking-widest text-4xl sm:text-5xl lg:text-7xl font-bold text-center mb-20">
@@ -147,20 +150,28 @@ const Checkout = () => {
                   <span className="text-2xl font-bold">Product</span>
                   <span className="text-2xl font-bold">Subtotal</span>
                 </div>
-                <div className="flex items-center justify-between">
-                  <span className="">Seared Salmon × 1 </span>
-                  <span>$12.00</span>
-                </div>
+                {cart.map((item) => (
+                  <div className="flex items-center justify-between">
+                    <span className="">
+                      {item.name} × {item.quantity}{" "}
+                    </span>
+                    <span>
+                      ${(Number(item.price) * item.quantity).toLocaleString()}
+                    </span>
+                  </div>
+                ))}
               </div>
               <span className="w-full h-px bg-zinc-300 block my-12"></span>
               <div className="flex flex-col gap-12">
                 <div className="flex items-center justify-between">
                   <span>Subtotal</span>
-                  <span>$12.00</span>
+                  <span>${totalPrice().toLocaleString()}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="">Total </span>
-                  <span className="text-4xl font-bold">$12.00</span>
+                  <span className="text-4xl font-bold">
+                    ${totalPrice().toLocaleString()}
+                  </span>
                 </div>
               </div>
               <p className="mt-20 text-2xl leading-loose tracking-wider max-w-4xl mx-auto text-center">

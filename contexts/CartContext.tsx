@@ -1,5 +1,6 @@
 // cartContext.tsx
 
+import { useRouter } from "next/router";
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 interface CartContextType {
@@ -23,6 +24,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider: React.FC = ({ children }) => {
   const [cart, setCart] = useState<ProductDetails[]>([]);
+  const router = useRouter();
 
   const addToCart = (productDetails: ProductDetails) => {
     const { _id, name, price, img, description, shortName, quantity } =
@@ -52,7 +54,20 @@ export const CartProvider: React.FC = ({ children }) => {
   };
 
   const removeFromCart = (productId: string) => {
-    setCart((prevCart) => prevCart.filter((item) => item._id !== productId));
+    setCart((prevCart: ProductDetails[]) => {
+      const updatedCart = prevCart.map((item) => {
+        if (item._id === productId) {
+          const newQuantity = item.quantity - 1;
+          if (newQuantity <= 0) {
+            return null;
+          }
+          return { ...item, quantity: Math.max(newQuantity, 1) };
+        }
+        return item;
+      });
+
+      return updatedCart.filter((item) => item !== null) as ProductDetails[];
+    });
   };
 
   const totalPrice = (): number => {
@@ -64,14 +79,14 @@ export const CartProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
+  }, [cart, router.pathname]);
 
   useEffect(() => {
     const storedCart = localStorage.getItem("cart");
     if (storedCart) {
       setCart(JSON.parse(storedCart));
     }
-  }, []);
+  }, [router.pathname]);
 
   return (
     <CartContext.Provider

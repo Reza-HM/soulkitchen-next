@@ -4,9 +4,7 @@ import Link from "next/link";
 import { AiOutlineClose } from "react-icons/ai";
 
 const Cart = () => {
-  const { cart, totalPrice } = useCart();
-
-  console.log(cart);
+  const { cart, totalPrice, removeFromCart } = useCart();
 
   return (
     <div className="container mt-40 mb-20">
@@ -61,7 +59,10 @@ const Cart = () => {
                 <td className="px-8 py-4 text-center ">
                   ${(Number(item.price) * item.quantity).toLocaleString()}
                 </td>
-                <td className="px-8 py-4">
+                <td
+                  className="px-8 py-4"
+                  onClick={() => removeFromCart(item._id)}
+                >
                   <AiOutlineClose className="text-5xl cursor-pointer text-red-500 bg-zinc-300 w-14 h-14 rounded-[50%] p-2 mx-auto" />
                 </td>
               </tr>
