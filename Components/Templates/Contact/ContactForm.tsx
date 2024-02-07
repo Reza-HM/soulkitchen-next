@@ -1,6 +1,29 @@
+import axios from "axios";
 import Image from "next/image";
+import { MouseEvent, useState } from "react";
+import swal from "sweetalert";
 
 const ContactForm = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const sendContactMessage = async (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    const res = await axios.post("/api/contacts", { name, email, message });
+    if (res.status === 201) {
+      swal({
+        title: "Your Message Has Been Sent!",
+        icon: "success",
+      }).then(() => {
+        setName("");
+        setEmail("");
+        setMessage("");
+      });
+    }
+  };
+
   return (
     <div className="flex flex-wrap justify-between items-center">
       <div className="w-full md:w-1/2 md:flex-1">
@@ -23,7 +46,12 @@ const ContactForm = () => {
               >
                 YOUR NAME
               </label>
-              <input type="text" className="neumorphic-input !py-4 !px-8" />
+              <input
+                type="text"
+                className="neumorphic-input !py-4 !px-8"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+              />
             </div>
             <div className="w-full">
               <label
@@ -32,7 +60,12 @@ const ContactForm = () => {
               >
                 YOUR EMAIL
               </label>
-              <input type="text" className="neumorphic-input !py-4 !px-8" />
+              <input
+                type="text"
+                className="neumorphic-input !py-4 !px-8"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+              />
             </div>
             <div className="w-full">
               <label
@@ -41,9 +74,15 @@ const ContactForm = () => {
               >
                 YOUR MESSAGE
               </label>
-              <textarea className="neumorphic-input min-h-60 max-h-96"></textarea>
+              <textarea
+                className="neumorphic-input min-h-60 max-h-96"
+                value={message}
+                onChange={(event) => setMessage(event.target.value)}
+              ></textarea>
             </div>
-            <button className="neumorphic-button">SUBMIT</button>
+            <button className="neumorphic-button" onClick={sendContactMessage}>
+              SUBMIT
+            </button>
           </form>
         </div>
       </div>

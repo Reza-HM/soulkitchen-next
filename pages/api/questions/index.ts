@@ -1,5 +1,5 @@
 import connectToDB from "@/configs/db";
-import contactModel from "@/models/contact";
+import questionModel from "@/models/question";
 import { NextApiRequest, NextApiResponse } from "next";
 
 connectToDB();
@@ -7,31 +7,30 @@ connectToDB();
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "GET") {
     try {
-      const contacts = await contactModel.find();
-      return res.status(200).json(contacts);
+      const questions = await questionModel.find();
+      return res.status(200).json(questions);
     } catch (err) {
-      console.error("Error fetching contacts:", err);
+      console.error("Error fetching questions:", err);
       res.status(500).json({ message: "Internal Server Error" });
     }
   } else if (req.method === "POST") {
     try {
-      const { name, email, message } = req.body;
+      const { question, answer } = req.body;
 
-      if (!name.trim() || !email.trim() || !message.trim()) {
+      if (!question.trim() || !answer.trim()) {
         return res.status(400).json({ message: "All fields are required" });
       }
 
-      const newContact = new contactModel({
-        name,
-        email,
-        message,
+      const newQuestion = new questionModel({
+        question,
+        answer,
       });
 
-      const savedContact = await newContact.save();
+      const savedQuestion = await newQuestion.save();
 
-      res.status(201).json({ message: "New Contact Created:", savedContact });
+      res.status(201).json({ message: "New Question Created:", savedQuestion });
     } catch (err) {
-      console.error("Error creating Contact:", err);
+      console.error("Error creating Question:", err);
       res.status(500).json({ message: "Internal Server Error" });
     }
   } else {
