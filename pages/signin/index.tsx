@@ -24,8 +24,8 @@ const Signin = () => {
         }).then(() => {
           setIdentifier("");
           setPassword("");
+          router.push("/");
           router.reload();
-          router.replace("/");
         });
       } else if (res.status >= 400 && res.status < 500) {
         swal({
