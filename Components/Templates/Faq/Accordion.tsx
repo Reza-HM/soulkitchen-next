@@ -10,7 +10,7 @@ const Accordion: FC<AccordionProps> = ({ answer, question }) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   return (
-    <div className="max-w-7xl mx-auto my-20">
+    <div className="max-w-7xl mx-auto my-4">
       <div
         className="bg-white rounded-lg shadow-lg text-slate-500 text-2xl cursor-pointer flex items-center justify-between p-8"
         onClick={() => setIsExpanded(!isExpanded)}
