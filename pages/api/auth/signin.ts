@@ -1,4 +1,4 @@
-import connectToDB from "@/pages/api/db";
+import connectToDB from "@/configs/db";
 import userModel from "@/models/user";
 import { generateToken, verifyPassword } from "@/utils/auth";
 import { serialize } from "cookie";

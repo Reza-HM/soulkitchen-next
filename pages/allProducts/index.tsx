@@ -1,14 +1,19 @@
 import ProductBox from "@/Components/Modules/ProductBox";
-import connectToDB from "@/pages/api/db";
-import ProductModel, { IProduct } from "@/models/product";
-import { GetStaticProps, GetStaticPropsContext } from "next";
-import { FC } from "react";
+import axios from "axios";
 
-interface AllProductsProps {
-  products: any[];
-}
+import { useEffect, useState } from "react";
 
-const AllProducts: FC<AllProductsProps> = ({ products }) => {
+const AllProducts = () => {
+  const [products, setProducts] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const res = await axios.get("/api/products");
+      setProducts(res.data);
+    };
+    fetchProducts();
+  }, []);
+
   return (
     <div className="container p-20">
       <h2 className="font-bold text-3xl sm:text-5xl md:text-7xl tracking-widest text-center my-12 ">
@@ -29,19 +34,6 @@ const AllProducts: FC<AllProductsProps> = ({ products }) => {
       </div>
     </div>
   );
-};
-
-export const getStaticProps: GetStaticProps = async (
-  context: GetStaticPropsContext
-) => {
-  connectToDB();
-  const products = await ProductModel.find({});
-
-  return {
-    props: {
-      products: JSON.parse(JSON.stringify(products)),
-    },
-  };
 };
 
 export default AllProducts;
