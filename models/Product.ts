@@ -4,7 +4,7 @@ export interface IProduct extends Document {
   name: string;
   description: string;
   img: string;
-  price: number;
+  price: string;
   shortName: string;
 }
 
@@ -13,7 +13,7 @@ const productSchema: Schema<IProduct> = new Schema(
     name: { type: String, required: true },
     description: { type: String, required: true },
     img: { type: String, required: true },
-    price: { type: Number, required: true }, // Adjust type to number
+    price: { type: String, required: true },
     shortName: { type: String, required: true },
   },
   { timestamps: true }

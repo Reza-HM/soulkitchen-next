@@ -38,9 +38,6 @@ const config: Config = {
       },
     },
   },
-  variants: {
-    scrollbar: ["rounded", "dark"],
-  },
   darkMode: "class",
   plugins: [],
 };

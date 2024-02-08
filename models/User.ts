@@ -1,6 +1,6 @@
 // user.model.ts
 import mongoose, { Schema, Document } from "mongoose";
-import userModel, { IProduct } from "./product";
+import userModel, { IProduct } from "@/models/product";
 
 export interface IUser extends Document {
   // existing fields...
