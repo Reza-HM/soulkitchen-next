@@ -1,11 +1,10 @@
 import ProductBox from "@/Components/Modules/ProductBox";
-import { IProduct } from "@/models/product";
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const BestSellers = () => {
-  const [products, setProducts] = useState<IProduct[]>([]);
+  const [products, setProducts] = useState<any[]>([]);
 
   useEffect(() => {
     const fetchProducts = async () => {

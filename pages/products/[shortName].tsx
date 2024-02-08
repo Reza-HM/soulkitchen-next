@@ -11,7 +11,7 @@ const SingleProduct = () => {
   const { shortName } = router.query;
   console.log(shortName);
 
-  const [productData, setProductData] = useState({});
+  const [productData, setProductData] = useState<any>({});
 
   useEffect(() => {
     const fetchProductData = async () => {

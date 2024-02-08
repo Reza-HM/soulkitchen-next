@@ -1,4 +1,4 @@
-import connectToDB from "@/configs/db";
+import connectToDB from "@/pages/api/db";
 import userModel from "@/models/user";
 import { verifyToken } from "@/utils/auth";
 import { NextApiRequest, NextApiResponse } from "next";

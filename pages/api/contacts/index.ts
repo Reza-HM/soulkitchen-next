@@ -1,4 +1,4 @@
-import connectToDB from "@/configs/db";
+import connectToDB from "@/pages/api/db";
 import contactModel from "@/models/contact";
 import { NextApiRequest, NextApiResponse } from "next";
 

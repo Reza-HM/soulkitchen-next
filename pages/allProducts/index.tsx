@@ -1,11 +1,11 @@
 import ProductBox from "@/Components/Modules/ProductBox";
-import connectToDB from "@/configs/db";
+import connectToDB from "@/pages/api/db";
 import ProductModel, { IProduct } from "@/models/product";
 import { GetStaticProps, GetStaticPropsContext } from "next";
 import { FC } from "react";
 
 interface AllProductsProps {
-  products: IProduct[];
+  products: any[];
 }
 
 const AllProducts: FC<AllProductsProps> = ({ products }) => {
@@ -41,7 +41,6 @@ export const getStaticProps: GetStaticProps = async (
     props: {
       products: JSON.parse(JSON.stringify(products)),
     },
-    revalidate: 60 * 60 * 12,
   };
 };
 

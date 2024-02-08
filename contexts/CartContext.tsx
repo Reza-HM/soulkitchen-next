@@ -1,7 +1,13 @@
 // cartContext.tsx
 
 import { useRouter } from "next/router";
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 
 interface CartContextType {
   cart: ProductDetails[];
@@ -22,7 +28,9 @@ interface ProductDetails {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-export const CartProvider: React.FC = ({ children }) => {
+export const CartProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}: any) => {
   const [cart, setCart] = useState<ProductDetails[]>([]);
   const router = useRouter();
 
