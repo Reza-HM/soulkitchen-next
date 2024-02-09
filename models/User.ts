@@ -1,5 +1,6 @@
 // user.model.ts
 import mongoose, { Schema, Document } from "mongoose";
+import userModel from "@/models/product";
 
 export interface IUser extends Document {
   username: string;
