@@ -1,16 +1,13 @@
 // user.model.ts
 import mongoose, { Schema, Document } from "mongoose";
-import userModel from "@/models/product";
 
 export interface IUser extends Document {
-  // existing fields...
   username: string;
   email: string;
   phone: string;
   password: string;
   token?: string;
   role?: string;
-  // new field for shopping cart
   cart: {
     items: Array<{
       product: ["_id"];
@@ -33,7 +30,6 @@ const userSchema: Schema<IUser> = new Schema(
     password: { type: String, required: true },
     role: { type: String, default: "user" },
     token: String,
-    // new shopping cart field
     cart: {
       items: [
         {
