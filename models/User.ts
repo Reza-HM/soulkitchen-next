@@ -1,6 +1,6 @@
 // user.model.ts
 import mongoose, { Schema, Document } from "mongoose";
-import userModel, { IProduct } from "@/models/product";
+import userModel from "@/models/product";
 
 export interface IUser extends Document {
   // existing fields...
@@ -13,7 +13,7 @@ export interface IUser extends Document {
   // new field for shopping cart
   cart: {
     items: Array<{
-      product: IProduct["_id"];
+      product: ["_id"];
       quantity: number;
     }>;
   };

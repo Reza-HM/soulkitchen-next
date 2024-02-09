@@ -143,7 +143,7 @@ const Navbar = () => {
           isDrawerMenuOpened ? "left-0" : "left-[-40rem]"
         } top-0 ${
           yScrollPoint > 45.599998474121094 ? "lg:top-0" : "lg:top-16"
-        } w-full xs:w-[300px] overflow-y-scroll min-h-screen dark:bg-zinc-900 dark:text-white transition-[left] duration-700 bg-white p-8 flex flex-col gap-20 !z-50`}
+        } w-full xs:!w-[300px] overflow-y-scroll min-h-screen dark:bg-zinc-900 dark:text-white transition-[left] duration-700 bg-white p-8 flex flex-col gap-20 !z-50`}
         style={{
           maxHeight: "80vh",
           overflowY: "auto",
